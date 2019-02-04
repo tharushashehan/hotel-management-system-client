@@ -1,0 +1,22 @@
+
+<mat-toolbar color="warn">
+  <mat-toolbar-row>
+    <img src="../../../assets/hotel-management-nav-logo.png" alt="Avatar" width="80" height="80" center >
+  </mat-toolbar-row>
+</mat-toolbar>
+<button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="color-primary">
+  <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+</button>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #drawer mode="side" opened role="navigation">
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/side-nav-bar-component', { outlets: {'nav-bar':['employee-dash-board-component']}}]">DashBoard</a>
+      <a mat-list-item [routerLink]="['/side-nav-bar-component', { outlets: {'nav-bar':['employee-room-details-component']}}]">Room Details</a>
+      <a mat-list-item [routerLink]="['/side-nav-bar-component', { outlets: {'nav-bar':['employee-room-booking-component']}}]">Book A Room</a>
+      <a mat-list-item [routerLink]="['/side-nav-bar-component', { outlets: {'nav-bar':['employee-apply-leave-component']}}]">Appply Leave</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet name="nav-bar"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
