@@ -11,6 +11,9 @@ import { EmployeeRoomDetailsComponent } from './employee/employee-room-details/e
 import { EmployeeRoomBookingComponent } from './employee/employee-room-booking/employee-room-booking.component';
 import {RouterModule, Routes} from "@angular/router";
 import {CustomMaterialModule} from "./material.module";
+import { AdminNavBarComponent } from './admin/admin-nav-bar/admin-nav-bar.component';
+import { AdminCreateUserComponent } from './admin/admin-create-user/admin-create-user.component';
+import { AdminCreateRoomComponent } from './admin/admin-create-room/admin-create-room.component';
 
 const appRoutes: Routes = [
   { path: 'user-login-component', component: UserLoginComponent, data: { title: 'UserLoginComponent' } },
@@ -30,7 +33,10 @@ const appRoutes: Routes = [
     EmployeeDashBoardComponent,
     EmployeeApplyLeaveComponent,
     EmployeeRoomDetailsComponent,
-    EmployeeRoomBookingComponent
+    EmployeeRoomBookingComponent,
+    AdminNavBarComponent,
+    AdminCreateUserComponent,
+    AdminCreateRoomComponent
   ],
   imports: [
     BrowserModule,
