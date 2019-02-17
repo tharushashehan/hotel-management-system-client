@@ -10,6 +10,12 @@ export class AdminNavBarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("this is the AdminNavBarComponent");
+  }
+  public pageName:string = "Welcomeback Admin";
+
+  public onclickSideNavItem(event, item){
+    this.pageName = "Hello, Welcome to " + item + "  page";
   }
 
 }

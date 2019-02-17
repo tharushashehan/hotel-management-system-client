@@ -13,4 +13,9 @@ export class SideNavBarComponent implements OnInit {
     console.log("this is the SideNavBarComponent");
   }
 
+  public pageName:string = "Welcomeback !";
+
+  public onclickSideNavItem(event, item){
+    this.pageName = "Hello, Welcome to " + item + "  page";
+  }
 }

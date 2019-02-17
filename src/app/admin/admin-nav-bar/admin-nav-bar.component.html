@@ -1,3 +1,32 @@
-<p>
-  admin-nav-bar works!
-</p>
+<mat-toolbar color="warn">
+  <mat-toolbar-row>
+    <img src="../../../assets/hotel-management-nav-logo.png" alt="Avatar" width="80" height="80" center>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="row">
+  <div class="col-sm-3 text-left">
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="color-primary">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+  </div>
+  <div class="col-sm-9 text-right">
+    <h1>{{pageName}}</h1>
+  </div>
+</div>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #drawer mode="side" opened role="navigation">
+    <mat-nav-list>
+      <a mat-list-item 
+        [routerLink]="['/admin-side-nav-bar-component', { outlets: {'nav-bar':['admin-create-room-component']}}]" (click)="onclickSideNavItem($event, 'Create Room')" >Create
+        Room</a>
+      <a mat-list-item
+        [routerLink]="['/admin-side-nav-bar-component', { outlets: {'nav-bar':['admin-create-user-component']}}]" (click)="onclickSideNavItem($event, 'Create user')" >Create
+        User</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet name="nav-bar"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

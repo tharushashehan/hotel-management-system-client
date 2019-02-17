@@ -14,8 +14,15 @@ export class UserLoginComponent implements OnInit {
     console.log("this is the UserLoginComponent");
   }
 
+  public username:string;
+  public password:string;
+
   loginClick() {
-    this.router.navigate(['/side-nav-bar-component']);
+    if(this.username.includes("admin")){
+      this.router.navigate(['/admin-side-nav-bar-component']);
+    }else{
+      this.router.navigate(['/side-nav-bar-component']);
+    }
   }
 
 }

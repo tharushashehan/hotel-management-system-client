@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { UserLoginComponent } from './user-login/user-login.component';
@@ -14,16 +16,8 @@ import {CustomMaterialModule} from "./material.module";
 import { AdminNavBarComponent } from './admin/admin-nav-bar/admin-nav-bar.component';
 import { AdminCreateUserComponent } from './admin/admin-create-user/admin-create-user.component';
 import { AdminCreateRoomComponent } from './admin/admin-create-room/admin-create-room.component';
+import {RouteDetails} from './app.route';
 
-const appRoutes: Routes = [
-  { path: 'user-login-component', component: UserLoginComponent, data: { title: 'UserLoginComponent' } },
-  { path: 'side-nav-bar-component', component: SideNavBarComponent, data: { title: 'SideNavBarComponent' }, children:[
-    { path: 'employee-apply-leave-component', component: EmployeeApplyLeaveComponent, outlet: 'nav-bar', data: { title: 'EmployeeApplyLeaveComponent' } },
-    { path: 'employee-dash-board-component', component: EmployeeDashBoardComponent,  outlet: 'nav-bar', data: { title: 'EmployeeDashBoardComponent' } },
-    { path: 'employee-room-booking-component', component: EmployeeRoomBookingComponent,  outlet: 'nav-bar', data: { title: 'EmployeeRoomBookingComponent' } },
-    { path: 'employee-room-details-component', component: EmployeeRoomDetailsComponent,  outlet: 'nav-bar', data: { title: 'EmployeeRoomDetailsComponent' } }
-  ] }
-];
 
 @NgModule({
   declarations: [
@@ -41,8 +35,10 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    HttpModule,
     RouterModule.forRoot(
-      appRoutes,
+      RouteDetails.appRoutes,
       { useHash: true }
     ),
     CustomMaterialModule,
