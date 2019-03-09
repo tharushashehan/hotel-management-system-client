@@ -1,132 +1,109 @@
 <form (ngSubmit)="onSubmit()" class="container" #EmployeeRoomBookingForm="ngForm">
 
-    <div class="row content-body">
-  
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-12 section-header">
-            <small>Create User Form</small>
-            <hr />
-          </div>
-        </div>
-      </div>
-  
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-4">
-            <table style="width: 100%;">
-              <tr>
-                <td>
-                  <label class="lableMargin">Employee ID</label>
-                  <input class="form-control input-sm   required" type="text" id="UserId" [(ngModel)]="data.UserId"
-                    name="UserId">
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="col-md-4">
-            <table style="width: 100%;">
-              <tr>
-                <td>
-                  <label class="lableMargin">Employee First Name</label>
-                  <input class="form-control input-sm   required" type="text" id="UserFName" [(ngModel)]="data.UserFName"
-                    name="UserFName">
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="col-md-4">
-            <table style="width: 100%;">
-              <tr>
-                <td>
-                  <label class="lableMargin">Employee Last Name</label>
-                  <input class="form-control input-sm   required" type="text" id="UserLName" [(ngModel)]="data.UserLName"
-                    name="UserLName">
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-  
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-4">
-            <table style="width: 100%;">
-              <tr>
-                <td>
-                  <label class="lableMargin">Employee NIC</label>
-                  <input class="form-control input-sm   required" type="text" id="UserNIC" [(ngModel)]="data.UserNIC"
-                    name="UserNIC">
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="col-md-4">
-            <table style="width: 100%;">
-              <tr>
-                <td>
-                  <label class="lableMargin">Employee Email Address</label>
-                  <input class="form-control input-sm   required" type="text" id="UserEmail" [(ngModel)]="data.UserEmail"
-                    name="UserEmail">
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="col-md-4">
-            <table style="width: 100%;">
-              <tr>
-                <td>
-                  <label class="lableMargin">Employee User Type</label>
-                  <select id="UserType" class="form-control input-sm " name="UserType" [(ngModel)]="data.UserType" >
-                      <option value="admin" class="form-control input-sm ">Admin</option>
-                      <option value="employee" class="form-control input-sm ">Employee</option>
-                  </select>
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-  
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-4">
-            <table style="width: 100%;">
-              <tr>
-                <td>
-                  <label class="lableMargin">Employee Address</label>
-                  <input class="form-control input-sm   required" type="text" id="UserAddrs" [(ngModel)]="data.UserAddrs"
-                    name="UserAddrs">
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="col-md-4">
-            <table style="width: 100%;">
-              <tr>
-                <td>
-                  <label class="lableMargin">Employee Password</label>
-                  <input class="form-control input-sm   required" type="text" id="UserPassWord" [(ngModel)]="data.UserPassWord"
-                    name="UserPassWord">
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
+  <div class="row content-body">
 
-    </div>
-  
-  
-    <div class="row actionButtonFix  mt-3 text-right">
-      <div class="col-md-12 col-md-offset-8 action-button-container">
-        <button type="button" class="btn-small btn btn-xs btn padding-xl" id="clearRBOMItem" (click)="onClear()">Clear</button>
-        <button type="submit" class="btn-small btn btn-xs btn-primary padding-xl" id="saveRBOMItem">Save</button>
-        <button type="button" class="btn-small btn btn-xs btn-warning padding-xl" id="updateRBOMItem">Update</button>
-        <button type="button" class="btn-small btn btn-xs btn-danger padding-xl" id="deleteRBOMItem" data-toggle="modal"
-          data-target="#RBOMitemRemoveWarningModal">Delete</button>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12 section-header">
+          <small>Create Room Form</small>
+          <hr />
+        </div>
       </div>
     </div>
-  
-  </form>
+
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-4">
+          <table style="width: 100%;">
+            <tr>
+              <td>
+                <label class="lableMargin">Room Type</label>
+                <select class="form-control" id="sel2">
+                    <option>Single</option>
+                    <option>Double</option>
+                    <option>Queen</option>
+                    <option>King</option>
+                  </select>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-4">
+          <table style="width: 100%;">
+            <tr>
+              <td>
+                <label class="lableMargin">Room No</label>
+                <input class="form-control input-sm   required" type="text" id="UserFName" [(ngModel)]="data.RoomFName"
+                  name="UserFName">
+              </td>
+            </tr>
+          </table>
+          <br>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-4">
+          <table style="width: 100%;">
+            <tr>
+              <td>
+                <label class="lableMargin">Start Date</label>
+                <input class="form-control input-sm  required" type="date" id="UserNIC" [(ngModel)]="data.UserNIC"
+                  name="UserNIC">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-4">
+          <table style="width: 100%;">
+            <tr>
+              <td>
+                <label class="lableMargin">End Date</label>
+                <input class="form-control input-sm  required" type="date" id="UserEmail" [(ngModel)]="data.UserEmail"
+                  name="UserEmail">
+              </td>
+            </tr>
+          </table>
+          <br>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12">
+          <table style="width: 100%;">
+            <tr>
+              <td>
+                <label class="lableMargin">Special Note</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row actionButtonFix  mt-3">
+    <div class="col-md-3 action-button-container left">
+      <button type="button" class="btn-small btn btn-xs btn padding-xl" id="clearRBOMItem" (click)="onClear()">Clear</button>
+    </div>
+    <div class="col-md-3 action-button-container text-right">
+      <button type="button" class="btn-small btn btn-xs btn-danger padding-xl" id="deleteRBOMItem">Delete</button>
+    </div>
+    <div class="col-md-3 action-button-container text-right">
+      <button type="button" class="btn-small btn btn-xs btn-warning padding-xl" id="updateRBOMItem">Update</button>
+    </div>
+    <div class="col-md-3 action-button-container text-right">
+      <button type="submit" class="btn-small btn btn-xs btn-primary padding-xl" id="saveRBOMItem">Submit</button>
+    </div>
+
+  </div>
+
+</form>
