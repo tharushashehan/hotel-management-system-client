@@ -18,18 +18,18 @@
             <tr>
               <td>
                 <label class="lableMargin">Room ID</label>
-                <input class="form-control input-sm   required" type="text" id="UserId" [(ngModel)]="data.RoomId" name="UserId">
+                <input class="form-control input-sm required" type="text" id="roomId" [(ngModel)]="data.roomId" name="roomId">
               </td>
             </tr>
           </table>
         </div>
+        
         <div class="col-md-4">
           <table style="width: 100%;">
             <tr>
               <td>
                 <label class="lableMargin">Room No</label>
-                <input class="form-control input-sm   required" type="text" id="UserFName" [(ngModel)]="data.RoomFName"
-                  name="UserFName">
+                <input class="form-control input-sm required" type="text" id="roomNo" [(ngModel)]="data.roomno" name="roomNo">
               </td>
             </tr>
           </table>
@@ -38,11 +38,10 @@
 
         <div class="col-md-4">
           <label class="lableMargin">Room Type</label>
-          <select class="form-control" id="sel2">
-            <option>Single</option>
-            <option>Double</option>
-            <option>Queen</option>
-            <option>King</option>
+          <select class="form-control" [(ngModel)]="roomTypeSelected" name="roomTypeSelect">
+            <option *ngFor= "let type of roomType" [value]="type.id">
+              {{type.name}}
+            </option>
           </select>
           <br>
         </div>
@@ -59,7 +58,7 @@
             <tr>
               <td>
                 <label class="lableMargin">Discription</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" type="text" id="roomDiscription" [(ngModel)]="data.Discription" name="roomDiscription" rows="3"></textarea>
               </td>
             </tr>
           </table>
@@ -79,7 +78,7 @@
         </div>
         <div class="col-md-4">
           <label>Price(Per Day): </label>
-          <input class="form-control input-sm   required" type="text" id="UserFName" [(ngModel)]="data.RoomFName" name="UserFName">
+          <input class="form-control input-sm required" type="number" id="UserFName" [(ngModel)]="data.RoomFName" name="UserFName">
         </div>
       </div>
     </div>

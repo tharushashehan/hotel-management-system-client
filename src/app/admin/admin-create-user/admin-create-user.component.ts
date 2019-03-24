@@ -8,47 +8,48 @@ import { Http } from '@angular/http';
 })
 export class AdminCreateUserComponent implements OnInit {
 
-  public data: any;
+  public user: any;
   public imagePath;
   imgURL: any;
   public message: string;
   constructor(private http: Http) {
 
-    this.data = {
-      UserId: "",
-      UserFName: "",
-      UserLName: "",
-      UserNIC: "",
-      UserEmail: "",
-      UserType: "employee",
-      UserAddrs: "",
-      UserPassWord: ""
-    }
+    this.user = {
+      userId: "",
+      userFName: "",
+      userLName: "",
+      userNIC: "",
+      userEmail: "",
+      userType: "",
+      userAddrs: "",
+      userPassword: ""
+    };
   }
 
   ngOnInit() {
     console.log("this is the AdminCreateUserComponent");
   }
 
-
-
-
   onSubmit() {
-    this.http.post("http://someurl", JSON.stringify(this.data))
+    console.log(this.user);
+    this.http.post("http://localhost:8080/user/create", this.user)
       .subscribe();
   }
 
   onClear() {
-    this.data = {
-      UserId: "",
-      UserFName: "",
-      UserLName: "",
-      UserNIC: "",
-      UserEmail: "",
-      UserType: "employee",
-      UserAddrs: "",
-      UserPassWord: ""
-    }
+    this.user = {
+      userId: null,
+      userFName: null,
+      userLName: null,
+      userNIC: null,
+      userEmail: null,
+      userType: null,
+      userAddrs: null,
+      userPassword: null
+    };
+    this.imagePath = null;
+    this.imgURL = null;
+    this.message = null;
   }
   preview(files) {
     if (files.length === 0) {
@@ -56,18 +57,18 @@ export class AdminCreateUserComponent implements OnInit {
     }
 
 
-    var mimeType = files[0].type;
+    const mimeType = files[0].type;
     if (mimeType.match(/image\/*/) == null) {
       this.message = "Only images are supported.";
       return;
     }
 
-    var reader = new FileReader();
+    const reader = new FileReader();
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
       this.imgURL = reader.result;
-    }
+    };
   }
 
 
