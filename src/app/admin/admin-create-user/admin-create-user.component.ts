@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../../model/user.model';
+import { UserService } from '../../servises/user.service';
+import { Observable, of } from 'rxjs';
+import { DataSource } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-admin-create-user',
@@ -9,11 +13,14 @@ import { Http } from '@angular/http';
 export class AdminCreateUserComponent implements OnInit {
 
   public user: any;
+  public userTable: any;
   public imagePath;
   imgURL: any;
   public message: string;
-  constructor(private http: Http) {
+  dataSource = new UserDataSource(this.userService);
+  displayedColumns = ['userId', 'userFName', 'userNIC', 'userEmail', 'userType', 'userAddrs', 'userPassword'];
 
+  constructor(private http: HttpClient, private userService: UserService) {
     this.user = {
       userId: "",
       userFName: "",
@@ -28,11 +35,12 @@ export class AdminCreateUserComponent implements OnInit {
 
   ngOnInit() {
     console.log("this is the AdminCreateUserComponent");
+    console.log(this.dataSource);
   }
 
   onSubmit() {
     console.log(this.user);
-    this.http.post("http://localhost:8080/user/create", this.user)
+    this.http.post("http://localhost:8080/user/create/", this.user)
       .subscribe();
   }
 
@@ -56,7 +64,6 @@ export class AdminCreateUserComponent implements OnInit {
       return;
     }
 
-
     const mimeType = files[0].type;
     if (mimeType.match(/image\/*/) == null) {
       this.message = "Only images are supported.";
@@ -71,5 +78,19 @@ export class AdminCreateUserComponent implements OnInit {
     };
   }
 
+}
+
+export class UserDataSource extends DataSource<any> {
+
+  constructor(private userService: UserService) {
+    super();
+  }
+
+  connect(): Observable<User[]> {
+    return this.userService.getUser();
+  }
+
+  disconnect() {
+  }
 
 }

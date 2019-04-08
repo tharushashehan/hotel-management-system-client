@@ -13,5 +13,5 @@ export class AppComponent {
   ngOnInit() {
     console.log("this is the AppComponent");
     this.router.navigate(['/user-login-component']);
-  };
+  }
 }
