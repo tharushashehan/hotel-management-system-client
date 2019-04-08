@@ -154,39 +154,57 @@
 
   <div class="col-md-10 offset-1">
 
-    <mat-table [dataSource]="dataSource">
-      
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Position Column -->
       <ng-container matColumnDef="userId">
-        <mat-header-cell *matHeaderCellDef>userId</mat-header-cell>
-        <mat-cell *matCellDef="let user">{{user.userId}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.userId}} </mat-cell>
       </ng-container>
+    
+      <!-- Name Column -->
       <ng-container matColumnDef="userFName">
-        <mat-header-cell *matCellDef>userFName</mat-header-cell>
-        <mat-cell *matCellDef="let user">{{user.userFName}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.userFName}} </mat-cell>
       </ng-container>
-      <ng-container matColumnDef="userNIC">
-        <mat-header-cell *matHeaderCellDef>userNIC</mat-header-cell>
-        <mat-cell *matCellDef="let user">{{user.userNIC}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="userEmail">
-          <mat-header-cell *matHeaderCellDef>userEmail</mat-header-cell>
-          <mat-cell *matCellDef="let user">{{user.userEmail}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="userType">
-          <mat-header-cell *matHeaderCellDef>userType</mat-header-cell>
-          <mat-cell *matCellDef="let user">{{user.userType}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="userAddrs">
-          <mat-header-cell *matHeaderCellDef>userAddrs</mat-header-cell>
-          <mat-cell *matCellDef="let user">{{user.userAddrs}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="userPassword">
-          <mat-header-cell *matHeaderCellDef>userPassword</mat-header-cell>
-          <mat-cell *matCellDef="let user">{{user.userPassword}}</mat-cell>
-      </ng-container>
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
+      <!-- Name Column -->
+      <ng-container matColumnDef="userLName">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.userLName}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="userNIC">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userNIC}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="userEmail">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userEmail}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="userType">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userType}} </mat-cell>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="userAddrs">
+        <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userAddrs}} </mat-cell>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="userPassword">
+        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userPassword}} </mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
   </div>

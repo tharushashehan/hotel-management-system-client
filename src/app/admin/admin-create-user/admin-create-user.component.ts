@@ -10,15 +10,15 @@ import { DataSource } from '@angular/cdk/collections';
   templateUrl: './admin-create-user.component.html',
   styleUrls: ['./admin-create-user.component.css']
 })
-export class AdminCreateUserComponent implements OnInit {
 
+export class AdminCreateUserComponent implements OnInit {
   public user: any;
   public userTable: any;
   public imagePath;
   imgURL: any;
   public message: string;
+  displayedColumns: string[] = ['userId', 'userFName', 'userLName', 'userNIC', 'userEmail', 'userType', 'userAddrs', 'userPassword'];
   dataSource = new UserDataSource(this.userService);
-  displayedColumns = ['userId', 'userFName', 'userNIC', 'userEmail', 'userType', 'userAddrs', 'userPassword'];
 
   constructor(private http: HttpClient, private userService: UserService) {
     this.user = {
@@ -32,7 +32,6 @@ export class AdminCreateUserComponent implements OnInit {
       userPassword: ""
     };
   }
-
   ngOnInit() {
     console.log("this is the AdminCreateUserComponent");
     console.log(this.dataSource);
@@ -59,6 +58,7 @@ export class AdminCreateUserComponent implements OnInit {
     this.imgURL = null;
     this.message = null;
   }
+
   preview(files) {
     if (files.length === 0) {
       return;
