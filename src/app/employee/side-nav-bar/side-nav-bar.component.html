@@ -1,27 +1,28 @@
 
-<mat-toolbar color="warn">
-  <mat-toolbar-row>
-    <img src="../../../assets/hotel-management-nav-logo.png" alt="Avatar" width="120" center >
-  </mat-toolbar-row>
-</mat-toolbar>
 
 <div class="row">
   <div class="col-sm-3 text-left">
-    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="color-primary">
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="white">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
   </div>
-  <div class="col-sm-9 text-right">{{pageName}}
+  <div class="col-sm-9 text-right"><h1>{{pageName}}</h1>
   </div>
 </div>
 
 <mat-sidenav-container class="example-container">
   <mat-sidenav #drawer mode="side" opened role="navigation">
+      <mat-toolbar class="mat-wrapper">
+          <mat-toolbar-row>
+              <img src="../../../assets/hotel-vacation.png" alt="Avatar">
+          </mat-toolbar-row>
+        </mat-toolbar>
+
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['/side-nav-bar-component', { outlets: {'nav-bar':['employee-dash-board-component']}}]" (click)="onclickSideNavItem($event, 'DashBoard')" >DashBoard</a>
-      <a mat-list-item [routerLink]="['/side-nav-bar-component', { outlets: {'nav-bar':['employee-room-details-component']}}]" (click)="onclickSideNavItem($event, 'Room Details')" >Room Details</a>
-      <a mat-list-item [routerLink]="['/side-nav-bar-component', { outlets: {'nav-bar':['employee-room-booking-component']}}]" (click)="onclickSideNavItem($event, 'Book A Room')" >Book A Room</a>
-      <a mat-list-item [routerLink]="['/side-nav-bar-component', { outlets: {'nav-bar':['employee-apply-leave-component']}}]" (click)="onclickSideNavItem($event, 'Appply Leave')" >Appply Leave</a>
+      <a mat-list-item [routerLink]="['/side-nav-bar-component', { outlets: {'nav-bar':['employee-dash-board-component']}}]" (click)="onclickSideNavItem($event, 'DashBoard')" ><span class='icon001'></span> &nbsp; &nbsp; DashBoard</a>
+      <a mat-list-item [routerLink]="['/side-nav-bar-component', { outlets: {'nav-bar':['employee-room-details-component']}}]" (click)="onclickSideNavItem($event, 'Room Details')" ><span class='icon002'></span> &nbsp; &nbsp;Room Details</a>
+      <a mat-list-item [routerLink]="['/side-nav-bar-component', { outlets: {'nav-bar':['employee-room-booking-component']}}]" (click)="onclickSideNavItem($event, 'Book A Room')" ><span class='icon003'></span> &nbsp; &nbsp;Book A Room</a>
+      <a mat-list-item [routerLink]="['/side-nav-bar-component', { outlets: {'nav-bar':['employee-apply-leave-component']}}]" (click)="onclickSideNavItem($event, 'Appply Leave')" ><span class='icon004'></span> &nbsp; &nbsp;Appply Leave</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
