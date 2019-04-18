@@ -5,11 +5,11 @@
   background-color: #309ae0;
 }
 
-.row{
-width: auto;
-height: auto;
-background-color: #76b2da;
-}
+/*.row{*/
+/*width: auto;*/
+/*height: auto;*/
+/*background-color: #76b2da;*/
+/*}*/
 
 .mat-wrapper img{
  width: 80px;
@@ -20,14 +20,14 @@ background-color: #76b2da;
 }
 
 .example-container {
-  width: 1350px;
+  /*width: 1350px;*/
   height: 800px;
   margin: 0px;
   background-color: #f0f5f5;
 }
 
 .example-container mat-nav-list{
-  width: 210px;
+  /*width: 210px;*/
   height: auto;
   margin: 10px;
   
