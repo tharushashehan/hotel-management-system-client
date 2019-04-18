@@ -1,9 +1,9 @@
-<form (ngSubmit)="onSubmit()" class="container" #AdminCreateRoomForm="ngForm">
 
-  <div class="container">
+<div class="container">
+<form (ngSubmit)="onSubmit()"  #AdminCreateRoomForm="ngForm">
 
     <div class="row">
-        <div class="col-md-12 section-header">
+        <div class="col-sm-4 section-header">
           <small>Create Room Form</small>
           <hr />
         </div>
@@ -57,20 +57,18 @@
     </div>
 
     <div class="row mt-3">
-      <div class="col-sm-4  text-left">
+      <div class="col-sm-8  text-left">
         <button type="button" class="btn btn-info" id="clearRBOMItem" (click)="onClear()">Clear</button>
       </div>
-      <div class="col-sm-6 text-right">
+      <div class="col-sm-8 text-right">
         <button type="button" class="btn  btn-warning" id="updateRBOMItem">Update</button>
       </div>
-      <div class="col-sm-2 text-right">
+      <div class="col-sm-8 text-right">
         <button type="submit" class="btn btn-primary" id="saveRBOMItem">Submit</button>
       </div>
 
     </div>
-  </div>
-
-
-
 
 </form>
+
+</div>

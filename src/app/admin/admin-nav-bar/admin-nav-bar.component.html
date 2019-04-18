@@ -8,6 +8,7 @@
   <div class="col-sm-9 text-right"><h1>{{pageName}}</h1></div>
 </div>
 
+<div class="row">
 <mat-sidenav-container class="example-container">
   <mat-sidenav #drawer mode="side" opened role="navigation">
       <mat-toolbar class="mat-wrapper">
@@ -17,7 +18,7 @@
         </mat-toolbar>
 
     <mat-nav-list>
-      <a mat-list-item 
+      <a mat-list-item
         [routerLink]="['/admin-side-nav-bar-component', { outlets: {'nav-bar':['admin-create-room-component']}}]" (click)="onclickSideNavItem($event, 'Create Room')" ><span class='icon001'></span> &nbsp; &nbsp;Create
         Room</a>
       <a mat-list-item
@@ -29,3 +30,4 @@
     <router-outlet name="nav-bar"></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+</div>
