@@ -1,26 +1,28 @@
-<mat-toolbar color="warn">
-  <mat-toolbar-row>
-    <img src="../../../assets/hotel-management-nav-logo.png" alt="Avatar" width="120" center>
-  </mat-toolbar-row>
-</mat-toolbar>
 
 <div class="row">
   <div class="col-sm-3 text-left">
-    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="color-primary">
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="white">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
   </div>
-  <div class="col-sm-9 text-right">{{pageName}}</div>
+  <div class="col-sm-9 text-right"><h1>{{pageName}}</h1></div>
 </div>
 
+<div >
 <mat-sidenav-container class="example-container">
   <mat-sidenav #drawer mode="side" opened role="navigation">
+      <mat-toolbar class="mat-wrapper">
+          <mat-toolbar-row>
+              <img src="../../../assets/hotel-vacation.png" alt="Avatar">
+          </mat-toolbar-row>
+        </mat-toolbar>
+
     <mat-nav-list>
-      <a mat-list-item 
-        [routerLink]="['/admin-side-nav-bar-component', { outlets: {'nav-bar':['admin-create-room-component']}}]" (click)="onclickSideNavItem($event, 'Create Room')" >Create
+      <a mat-list-item
+        [routerLink]="['/admin-side-nav-bar-component', { outlets: {'nav-bar':['admin-create-room-component']}}]" (click)="onclickSideNavItem($event, 'Create Room')" ><span class='icon001'></span> &nbsp; &nbsp;Create
         Room</a>
       <a mat-list-item
-        [routerLink]="['/admin-side-nav-bar-component', { outlets: {'nav-bar':['admin-create-user-component']}}]" (click)="onclickSideNavItem($event, 'Create user')" >Create
+        [routerLink]="['/admin-side-nav-bar-component', { outlets: {'nav-bar':['admin-create-user-component']}}]" (click)="onclickSideNavItem($event, 'Create user')" ><span class='icon002'></span> &nbsp; &nbsp;Create
         User</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -28,3 +30,4 @@
     <router-outlet name="nav-bar"></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+</div>

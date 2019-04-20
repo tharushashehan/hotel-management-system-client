@@ -1,102 +1,74 @@
-<form (ngSubmit)="onSubmit()" class="container" #AdminCreateRoomForm="ngForm">
 
-  <div class="row content-body">
+<div class="container">
+<form (ngSubmit)="onSubmit()"  #AdminCreateRoomForm="ngForm" >
 
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-12 section-header">
+    <div class="row">
+        <div class="col-sm-4 section-header">
           <small>Create Room Form</small>
           <hr />
         </div>
-      </div>
     </div>
 
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-4">
-          <table style="width: 100%;">
-            <tr>
-              <td>
-                <label class="lableMargin">Room ID</label>
-                <input class="form-control input-sm required" type="text" id="roomId" [(ngModel)]="data.roomId" name="roomId">
-              </td>
-            </tr>
-          </table>
-        </div>
-        
-        <div class="col-md-4">
-          <table style="width: 100%;">
-            <tr>
-              <td>
-                <label class="lableMargin">Room No</label>
-                <input class="form-control input-sm required" type="text" id="roomNo" [(ngModel)]="data.roomno" name="roomNo">
-              </td>
-            </tr>
-          </table>
-        </div>
-
-
-        <div class="col-md-4">
-          <label class="lableMargin">Room Type</label>
-          <select class="form-control" [(ngModel)]="roomTypeSelected" name="roomTypeSelect">
-            <option *ngFor= "let type of roomType" [value]="type.id">
-              {{type.name}}
-            </option>
-          </select>
-          <br>
-        </div>
-
-
-
+    <div class="row">
+      <div class="col-sm-4">
+        <label class="lableMargin">Room ID</label>
+        <input class="form-control required" type="text" id="roomId" [(ngModel)]="data.roomId" name="roomId">
       </div>
+
+      <div class="col-sm-4">
+        <label class="lableMargin">Room No</label>
+        <input class="form-control  required" type="text" id="roomNo" [(ngModel)]="data.roomno" name="roomNo">
+      </div>
+
+
+      <div class="col-sm-4">
+        <label class="lableMargin">Room Type</label>
+        <select class="form-control" [(ngModel)]="roomTypeSelected" name="roomTypeSelect">
+          <option *ngFor= "let type of roomType" [value]="type.id">
+            {{type.name}}
+          </option>
+        </select>
+        <br>
+      </div>
+
     </div>
 
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-12">
-          <table style="width: 100%;">
-            <tr>
-              <td>
-                <label class="lableMargin">Discription</label>
-                <textarea class="form-control" type="text" id="roomDiscription" [(ngModel)]="data.Discription" name="roomDiscription" rows="3"></textarea>
-              </td>
-            </tr>
-          </table>
-        </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <label class="lableMargin">Discription</label>
+        <textarea class="form-control" type="text" id="roomDiscription" [(ngModel)]="data.Discription" name="roomDiscription" rows="3"></textarea>
       </div>
     </div>
 
 
-    <div class="col-md-12">
-      <br/>
-      <div class="row">
-        <div class="col-md-4">
-          <label>Image of the Room</label>
-          <span style="color:red;" *ngIf="message">{{message}}</span>
-          <input #file type="file" accept='image/*' (change)="preview(file.files)" />
-          <img [src]="imgURL" height="200" *ngIf="imgURL">
-        </div>
-        <div class="col-md-4">
-          <label>Price(Per Day): </label>
-          <input class="form-control input-sm required" type="number" id="UserFName" [(ngModel)]="data.RoomFName" name="UserFName">
-        </div>
+    <div class="row mt-3">
+      <div class="col-sm-8">
+        <label class="lableMargin">Image of the Room</label>
+        <span style="color:red;" *ngIf="message">{{message}}</span>
+        <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+        <img [src]="imgURL" height="200" *ngIf="imgURL">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <label class="lableMargin">Price(Per Day): </label>
+        <input class="form-control input-sm required" type="number" id="UserFName" [(ngModel)]="data.RoomFName" name="UserFName">
       </div>
     </div>
 
-  </div>
+    <div class="row mt-3">
+      <div class="col-sm-4  text-left">
+        <button type="button" class="btn btn-info" id="clearRBOMItem" (click)="onClear()">Clear</button>
+      </div>
+      <div class="col-sm-6 text-right">
+        <button type="button" class="btn  btn-warning" id="updateRBOMItem">Update</button>
+      </div>
+      <div class="col-sm-2 text-right">
+        <button type="submit" class="btn btn-primary" id="saveRBOMItem">Submit</button>
+      </div>
 
-
-  <div class="row actionButtonFix  mt-3">
-      <div class="col-md-4 action-button-container left">
-        <button type="button" class="btn-small btn btn-xs btn-info padding-xl" id="clearRBOMItem" (click)="onClear()">Clear</button>
-      </div>
-      <div class="col-md-6 action-button-container text-right">
-        <button type="button" class="btn-small btn btn-xs btn-warning padding-xl" id="updateRBOMItem">Update</button>
-      </div>
-      <div class="col-md-2 action-button-container text-right">
-        <button type="submit" class="btn-small btn btn-xs btn-primary padding-xl" id="saveRBOMItem">Submit</button>
-      </div>
-  
     </div>
 
 </form>
+
+</div>

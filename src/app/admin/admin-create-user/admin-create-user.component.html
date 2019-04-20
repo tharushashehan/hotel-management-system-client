@@ -1,140 +1,142 @@
-<form (ngSubmit)="onSubmit()" class="container" #AdminCreateUserForm="ngForm">
+<div>
+  <form (ngSubmit)="onSubmit()" class="container" #AdminCreateUserForm="ngForm">
+    <div class="row content-body">
 
-  <div class="row content-body">
-
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-12 section-header">
-          <small>Create User Form</small>
-          <hr />
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12 section-header">
+            <small>Create User Form</small>
+            <hr />
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-4">
-          <table style="width: 100%;">
-            <tr>
-              <td>
-                <label class="lableMargin">Employee ID</label>
-                <input class="form-control input-sm   required" type="text" id="userId" [(ngModel)]="user.userId" name="userId">
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="col-md-4">
-          <table style="width: 100%;">
-            <tr>
-              <td>
-                <label class="lableMargin">Employee First Name</label>
-                <input class="form-control input-sm   required" type="text" id="userFName" [(ngModel)]="user.userFName"
-                  name="userFName">
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="col-md-4">
-          <table style="width: 100%;">
-            <tr>
-              <td>
-                <label class="lableMargin">Employee Last Name</label>
-                <input class="form-control input-sm   required" type="text" id="userLName" [(ngModel)]="user.userLName"
-                  name="userLName">
-              </td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-4">
-          <table style="width: 100%;">
-            <tr>
-              <td>
-                <label class="lableMargin">Employee NIC</label>
-                <input class="form-control input-sm   required" type="text" id="userNIC" [(ngModel)]="user.userNIC"
-                  name="userNIC">
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="col-md-4">
-          <table style="width: 100%;">
-            <tr>
-              <td>
-                <label class="lableMargin">Employee Email Address</label>
-                <input class="form-control input-sm   required" type="text" id="userEmail" [(ngModel)]="user.userEmail"
-                  name="userEmail">
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="col-md-4">
-          <table style="width: 100%;">
-            <tr>
-              <td>
-                <label class="lableMargin">Employee User Type</label>
-                <select id="userType" class="form-control input-sm " name="userType" [(ngModel)]="user.userType">
-                  <option value="admin" class="form-control input-sm ">Admin</option>
-                  <option value="employee" class="form-control input-sm ">Employee</option>
-                </select>
-              </td>
-            </tr>
-          </table>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-4">
+            <table style="width: 100%;">
+              <tr>
+                <td>
+                  <label class="lableMargin">Employee ID</label>
+                  <input class="form-control input-sm   required" type="text" id="userId" [(ngModel)]="user.userId"
+                    name="userId">
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table style="width: 100%;">
+              <tr>
+                <td>
+                  <label class="lableMargin">Employee First Name</label>
+                  <input class="form-control input-sm   required" type="text" id="userFName"
+                    [(ngModel)]="user.userFName" name="userFName">
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table style="width: 100%;">
+              <tr>
+                <td>
+                  <label class="lableMargin">Employee Last Name</label>
+                  <input class="form-control input-sm   required" type="text" id="userLName"
+                    [(ngModel)]="user.userLName" name="userLName">
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-4">
-          <table style="width: 100%;">
-            <tr>
-              <td>
-                <label class="lableMargin">Employee Address</label>
-                <input class="form-control input-sm   required" type="text" id="userAddrs" [(ngModel)]="user.userAddrs"
-                  name="userAddrs">
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="col-md-4">
-          <table style="width: 100%;">
-            <tr>
-              <td>
-                <label class="lableMargin">Employee Password</label>
-                <input class="form-control input-sm   required" type="text" id="userPassword" [(ngModel)]="user.userPassword"
-                  name="userPassword">
-              </td>
-            </tr>
-          </table>
-          <br>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-4">
+            <table style="width: 100%;">
+              <tr>
+                <td>
+                  <label class="lableMargin">Employee NIC</label>
+                  <input class="form-control input-sm   required" type="text" id="userNIC" [(ngModel)]="user.userNIC"
+                    name="userNIC">
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table style="width: 100%;">
+              <tr>
+                <td>
+                  <label class="lableMargin">Employee Email Address</label>
+                  <input class="form-control input-sm   required" type="text" id="userEmail"
+                    [(ngModel)]="user.userEmail" name="userEmail">
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table style="width: 100%;">
+              <tr>
+                <td>
+                  <label class="lableMargin">Employee User Type</label>
+                  <select id="userType" class="form-control input-sm " name="userType" [(ngModel)]="user.userType">
+                    <option value="admin" class="form-control input-sm ">Admin</option>
+                    <option value="employee" class="form-control input-sm ">Employee</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-4">
-          <label>Profile Picture</label>
-          <span style="color:red;" *ngIf="message">{{message}}</span>
-          <input #file type="file" accept='image/*' (change)="preview(file.files)" />
-          <img [src]="imgURL" height="200" *ngIf="imgURL">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-4">
+            <table style="width: 100%;">
+              <tr>
+                <td>
+                  <label class="lableMargin">Employee Address</label>
+                  <input class="form-control input-sm   required" type="text" id="userAddrs"
+                    [(ngModel)]="user.userAddrs" name="userAddrs">
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table style="width: 100%;">
+              <tr>
+                <td>
+                  <label class="lableMargin">Employee Password</label>
+                  <input class="form-control input-sm   required" type="text" id="userPassword"
+                    [(ngModel)]="user.userPassword" name="userPassword">
+                </td>
+              </tr>
+            </table>
+            <br>
+          </div>
         </div>
       </div>
+
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-4">
+            <label>Profile Picture</label>
+            <span style="color:red;" *ngIf="message">{{message}}</span>
+            <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+            <img [src]="imgURL" height="200" *ngIf="imgURL">
+          </div>
+        </div>
+      </div>
+
+
+
     </div>
 
 
-
-  </div>
-
-
-  <div class="row actionButtonFix  mt-3">
+    <div class="row actionButtonFix  mt-3">
       <div class="col-md-4 action-button-container left">
-        <button type="button" class="btn-small btn btn-xs btn-info padding-xl" id="clearRBOMItem" (click)="onClear()">Clear</button>
+        <button type="button" class="btn-small btn btn-xs btn-info padding-xl" id="clearRBOMItem"
+          (click)="onClear()">Clear</button>
       </div>
       <div class="col-md-6 action-button-container text-right">
         <button type="button" class="btn-small btn btn-xs btn-warning padding-xl" id="updateRBOMItem">Update</button>
@@ -142,7 +144,69 @@
       <div class="col-md-2 action-button-container text-right">
         <button type="submit" class="btn-small btn btn-xs btn-primary padding-xl" id="saveRBOMItem">Submit</button>
       </div>
-  
+
     </div>
 
-</form>
+  </form>
+
+  <br>
+  <br>
+
+  <div class="col-md-10 offset-1">
+
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="userId">
+        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.userId}} </mat-cell>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="userFName">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.userFName}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="userLName">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.userLName}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="userNIC">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userNIC}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="userEmail">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userEmail}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="userType">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userType}} </mat-cell>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="userAddrs">
+        <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userAddrs}} </mat-cell>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="userPassword">
+        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userPassword}} </mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+  </div>
+
+</div>

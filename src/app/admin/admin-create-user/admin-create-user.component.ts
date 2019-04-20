@@ -1,19 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../../model/user.model';
+import { UserService } from '../../servises/user.service';
+import { Observable, of } from 'rxjs';
+import { DataSource } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-admin-create-user',
   templateUrl: './admin-create-user.component.html',
   styleUrls: ['./admin-create-user.component.css']
 })
-export class AdminCreateUserComponent implements OnInit {
 
+export class AdminCreateUserComponent implements OnInit {
   public user: any;
+  public userTable: any;
   public imagePath;
   imgURL: any;
   public message: string;
-  constructor(private http: Http) {
+  displayedColumns: string[] = ['userId', 'userFName', 'userLName', 'userNIC', 'userEmail', 'userType', 'userAddrs', 'userPassword'];
+  dataSource = new UserDataSource(this.userService);
 
+  constructor(private http: HttpClient, private userService: UserService) {
     this.user = {
       userId: "",
       userFName: "",
@@ -25,14 +32,14 @@ export class AdminCreateUserComponent implements OnInit {
       userPassword: ""
     };
   }
-
   ngOnInit() {
     console.log("this is the AdminCreateUserComponent");
+    console.log(this.dataSource);
   }
 
   onSubmit() {
     console.log(this.user);
-    this.http.post("http://localhost:8080/user/create", this.user)
+    this.http.post("http://localhost:8080/user/create/", this.user)
       .subscribe();
   }
 
@@ -51,11 +58,11 @@ export class AdminCreateUserComponent implements OnInit {
     this.imgURL = null;
     this.message = null;
   }
+
   preview(files) {
     if (files.length === 0) {
       return;
     }
-
 
     const mimeType = files[0].type;
     if (mimeType.match(/image\/*/) == null) {
@@ -71,5 +78,19 @@ export class AdminCreateUserComponent implements OnInit {
     };
   }
 
+}
+
+export class UserDataSource extends DataSource<any> {
+
+  constructor(private userService: UserService) {
+    super();
+  }
+
+  connect(): Observable<User[]> {
+    return this.userService.getUser();
+  }
+
+  disconnect() {
+  }
 
 }

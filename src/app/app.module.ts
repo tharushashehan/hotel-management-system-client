@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MatTableModule} from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './servises/user.service';
 
 import { AppComponent } from './app.component';
 import { UserLoginComponent } from './user-login/user-login.component';
@@ -11,12 +14,12 @@ import { EmployeeDashBoardComponent } from './employee/employee-dash-board/emplo
 import { EmployeeApplyLeaveComponent } from './employee/employee-apply-leave/employee-apply-leave.component';
 import { EmployeeRoomDetailsComponent } from './employee/employee-room-details/employee-room-details.component';
 import { EmployeeRoomBookingComponent } from './employee/employee-room-booking/employee-room-booking.component';
-import {RouterModule, Routes} from "@angular/router";
-import {CustomMaterialModule} from "./material.module";
+import { RouterModule, Routes } from "@angular/router";
+import { CustomMaterialModule } from "./material.module";
 import { AdminNavBarComponent } from './admin/admin-nav-bar/admin-nav-bar.component';
 import { AdminCreateUserComponent } from './admin/admin-create-user/admin-create-user.component';
 import { AdminCreateRoomComponent } from './admin/admin-create-room/admin-create-room.component';
-import {RouteDetails} from './app.route';
+import { RouteDetails } from './app.route';
 
 
 @NgModule({
@@ -42,10 +45,12 @@ import {RouteDetails} from './app.route';
       { useHash: true }
     ),
     CustomMaterialModule,
+    MatTableModule,
+    HttpClientModule
   ],
   exports: [RouterModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
