@@ -1,56 +1,71 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { MatTableModule} from '@angular/material';
-import { HttpClientModule } from '@angular/common/http';
-import { UserService } from './servises/user.service';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 import { AppComponent } from './app.component';
-import { UserLoginComponent } from './user-login/user-login.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SideNavBarComponent } from './employee/side-nav-bar/side-nav-bar.component';
-import { EmployeeDashBoardComponent } from './employee/employee-dash-board/employee-dash-board.component';
-import { EmployeeApplyLeaveComponent } from './employee/employee-apply-leave/employee-apply-leave.component';
-import { EmployeeRoomDetailsComponent } from './employee/employee-room-details/employee-room-details.component';
-import { EmployeeRoomBookingComponent } from './employee/employee-room-booking/employee-room-booking.component';
-import { RouterModule, Routes } from "@angular/router";
-import { CustomMaterialModule } from "./material.module";
-import { AdminNavBarComponent } from './admin/admin-nav-bar/admin-nav-bar.component';
-import { AdminCreateUserComponent } from './admin/admin-create-user/admin-create-user.component';
-import { AdminCreateRoomComponent } from './admin/admin-create-room/admin-create-room.component';
-import { RouteDetails } from './app.route';
 
+// Import containers
+import { DefaultLayoutComponent } from './containers';
+
+import { P404Component } from './views/error/404.component';
+import { P500Component } from './views/error/500.component';
+import { LoginComponent } from './views/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
+
+const APP_CONTAINERS = [
+  DefaultLayoutComponent
+];
+
+import {
+  AppAsideModule,
+  AppBreadcrumbModule,
+  AppHeaderModule,
+  AppFooterModule,
+  AppSidebarModule,
+} from '@coreui/angular';
+
+// Import routing module
+import { AppRoutingModule } from './app.routing';
+
+// Import 3rd party components
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UserLoginComponent,
-    SideNavBarComponent,
-    EmployeeDashBoardComponent,
-    EmployeeApplyLeaveComponent,
-    EmployeeRoomDetailsComponent,
-    EmployeeRoomBookingComponent,
-    AdminNavBarComponent,
-    AdminCreateUserComponent,
-    AdminCreateRoomComponent
-  ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpModule,
-    RouterModule.forRoot(
-      RouteDetails.appRoutes,
-      { useHash: true }
-    ),
-    CustomMaterialModule,
-    MatTableModule,
-    HttpClientModule
+    AppRoutingModule,
+    AppAsideModule,
+    AppBreadcrumbModule.forRoot(),
+    AppFooterModule,
+    AppHeaderModule,
+    AppSidebarModule,
+    PerfectScrollbarModule,
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
+    ChartsModule
   ],
-  exports: [RouterModule,
+  declarations: [
+    AppComponent,
+    ...APP_CONTAINERS,
+    P404Component,
+    P500Component,
+    LoginComponent,
+    RegisterComponent
   ],
-  providers: [UserService],
-  bootstrap: [AppComponent]
+  providers: [{
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  }],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
