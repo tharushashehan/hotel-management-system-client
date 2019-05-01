@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AdminComponent } from './admin.component';
 import { AdminRoomCreateComponent } from './rooms/admin-room-create.component';
+import { AdminUserCreateComponent } from './users/admin-user-create.component';
 
 // Buttons Routing
 import { AdminRoutingModule } from './admin-routing.module';
@@ -18,7 +19,8 @@ import { AdminRoutingModule } from './admin-routing.module';
   ],
   declarations: [
     AdminComponent,
-    AdminRoomCreateComponent
+    AdminRoomCreateComponent,
+    AdminUserCreateComponent
   ]
 })
 export class AdminModule { }

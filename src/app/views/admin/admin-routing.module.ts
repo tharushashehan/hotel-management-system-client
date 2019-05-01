@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminComponent } from './admin.component';
 import { AdminRoomCreateComponent } from './rooms/admin-room-create.component';
+import { AdminUserCreateComponent } from './users/admin-user-create.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,32 @@ const routes: Routes = [
         component: AdminRoomCreateComponent,
         data: {
           title: 'Create room'
+        }
+      }
+    ]
+  },
+  {
+    path: 'users',
+    data: {
+      title: 'Users'
+    },
+    children: [
+      {
+        path: '',
+        redirectTo: 'dashboard'
+      },
+      {
+        path: 'dashboard',
+        component: AdminComponent,
+        data: {
+          title: 'dashboard'
+        }
+      },
+      {
+        path: 'create',
+        component: AdminUserCreateComponent,
+        data: {
+          title: 'Create user'
         }
       }
     ]

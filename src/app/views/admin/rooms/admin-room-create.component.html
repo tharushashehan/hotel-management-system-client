@@ -1,4 +1,60 @@
-<div class="container">
-  create room form
 
+<div class="col-md-12">
+<div class="card">
+  <div class="card-header">
+    <strong>Create Room</strong> Room
+  </div>
+  <div class="card-body">
+    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="room_id">Room ID</label>
+        <div class="col-md-9">
+          <input type="text" id="room_id" name="room_id" class="form-control" placeholder="Room ID">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="room_no">Room No</label>
+        <div class="col-md-9">
+          <input type="text" id="room_no" name="room_no" class="form-control" placeholder="Room No">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="room_type">Room Type</label>
+        <div class="col-md-9">
+          <select id="room_type" name="room_type" class="form-control">
+            <option value="0">Select a room</option>
+            <option value="1">Option #1</option>
+            <option value="2">Option #2</option>
+            <option value="3">Option #3</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="description">Description</label>
+        <div class="col-md-9">
+          <textarea id="description" name="description" rows="9" class="form-control" placeholder="Description.."></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="room_image">Image of the Room</label>
+        <div class="col-md-9">
+          <input type="file" id="room_image" name="room_image" multiple>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="price_pd">Price(Per Day):</label>
+        <div class="col-md-9">
+          <input type="number" id="price_pd" name="price_pd" class="form-control" placeholder="Price">
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+  <div class="card-footer">
+    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+    <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+  </div>
+</div>
 </div>

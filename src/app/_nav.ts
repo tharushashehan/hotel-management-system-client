@@ -34,45 +34,70 @@ export const navItems: NavData[] = [
     name: 'Dashboard',
     url: '/dashboard',
     icon: 'icon-speedometer',
-    badge: {
-      variant: 'info',
-      text: 'NEW'
-    }
+    // badge: {
+    //   variant: 'info',
+    //   text: 'NEW'
+    // }
   },
   {
     title: true,
     name: 'Admin'
   },
   {
+    name: 'Dashboard',
+    url: '/admin/dashboard',
+    icon: 'icon-layers'
+  },
+  {
     name: 'Rooms',
     url: '/admin/rooms',
-    icon: 'icon-puzzle',
+    icon: 'icon-grid',
     children: [
-      {
-        name: 'dashboard',
-        url: '/admin/rooms/dashboard',
-        icon: 'icon-puzzle'
-      },
       {
         name: 'create Room',
         url: '/admin/rooms/create',
-        icon: 'icon-puzzle'
+        icon: 'icon-map'
       }]
   },
   {
     name: 'Users',
     url: '/admin/users',
-    icon: 'icon-puzzle',
+    icon: 'icon-people',
     children: [
-      {
-        name: 'dashboard',
-        url: '/admin/users/dashboard',
-        icon: 'icon-puzzle'
-      },
       {
         name: 'create user',
         url: '/admin/users/create',
-        icon: 'icon-puzzle'
+        icon: 'icon-user'
       }]
-  }
+  },
+  {
+    title: true,
+    name: 'Employee'
+  },
+  {
+    name: 'Employee',
+    url: '/employee',
+    icon: 'icon-user-following',
+    children: [
+      {
+        name: 'Dashboard',
+        url: '/employee/dashboard',
+        icon: 'icon-layers'
+      },
+      {
+        name: 'Apply Leave',
+        url: '/employee/apply-leave',
+        icon: 'icon-plane'
+      },
+      {
+        name: 'Room Booking',
+        url: '/employee/room-booking',
+        icon: 'icon-anchor'
+      },
+      {
+        name: 'Room Details',
+        url: '/employee/room-details',
+        icon: 'icon-tag'
+      }]
+  },
 ];
