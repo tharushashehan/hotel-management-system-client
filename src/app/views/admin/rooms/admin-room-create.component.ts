@@ -7,18 +7,17 @@ import { RoomService } from './room.service';
 
 export class AdminRoomCreateComponent {
 
+  constructor(private room: RoomService) {
 
-  title = 'Angular Form Validation Tutorial';
-  todaydate;
-  componentproperty;
-  constructor(private room: RoomService) { }
+  }
 
   ngOnInit() {
     console.log(this.room.getUsers());
   }
 
   onClickSubmit(data) {
-    alert('Entered Email id : ' + data.emailid);
+    this.room.submitUser(data);
+
   }
 
 }

@@ -1,4 +1,61 @@
-<div>
-  employee apply leave
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header">
+      <strong>Apply Leave</strong>
+    </div>
+    <div class="card-body">
+      <form #createRoom = "ngForm" action="" method="post" enctype="multipart/form-data" class="form-horizontal" (ngSubmit) = "onClickSubmit(createRoom.value)">
 
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="room_id">Employee ID</label>
+          <div class="col-md-9">
+            <input type="text" id="room_id" name="room_id" class="form-control" placeholder="Room ID" ngModel>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="room_type">Leave Type</label>
+          <div class="col-md-9">
+            <select id="room_type" name="room_type" class="form-control">
+              <option value="0">Select a Leave Type</option>
+              <option>Annual Leave</option>
+              <option>Casual Leave</option>
+              <option>Sick Leave</option>
+              <option>Maternity Leave</option>
+              <option>Paternity Leave</option>
+              <option>No Pay</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="room_type">Leave period</label>
+          <div class="col-md-9">
+            <select id="room_type" name="room_type" class="form-control">
+              <option value="0">Select a Leave period</option>
+              <option>Half Day</option>
+              <option>Full Day</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="date-input">Start Date</label>
+          <div class="col-md-9">
+            <input class="form-control" id="date-input" type="date" name="date-input" placeholder="date">
+            <span class="help-block">Please enter a valid date</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="date-input">End Date</label>
+          <div class="col-md-9">
+            <input class="form-control" id="date-input" type="date" name="date-input" placeholder="date">
+            <span class="help-block">Please enter a valid date</span>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+      <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+    </div>
+  </div>
 </div>

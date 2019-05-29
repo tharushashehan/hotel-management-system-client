@@ -3,13 +3,18 @@
  */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'environments/environment';
 
 
 @Injectable()
 export class RoomService {
     constructor(private http: HttpClient) {}
 
-    getUsers(){
-        return this.http.get<any>('http://ec2-34-221-169-242.us-west-2.compute.amazonaws.com:8080/users/');
+    getUsers() {
+        return this.http.get<any>(environment.api_url + '/users/');
+    }
+
+    submitUser($payload) {
+        return this.http.post<any>(environment.api_url + '/user/', $payload);
     }
 }
