@@ -24,6 +24,7 @@ import { RegisterComponent } from './views/register/register.component';
 
 
 import { RoomService } from './views/admin/rooms/room.service';
+import { LoginService } from './views/login/login.service';
 
 
 const APP_CONTAINERS = [
@@ -75,7 +76,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   },
-    RoomService],
-  bootstrap: [ AppComponent ]
+    RoomService,
+    LoginService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
