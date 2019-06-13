@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -24,7 +25,9 @@ import { RegisterComponent } from './views/register/register.component';
 
 
 import { RoomService } from './views/admin/rooms/room.service';
+import { UserService } from './views/admin/users/user.service';
 import { LoginService } from './views/login/login.service';
+import {EmployeeService } from './views/employee/employee.service';
 
 
 const APP_CONTAINERS = [
@@ -50,6 +53,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 @NgModule({
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     AppAsideModule,
@@ -76,8 +80,10 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   },
+    UserService,
     RoomService,
-    LoginService],
+    LoginService,
+    EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

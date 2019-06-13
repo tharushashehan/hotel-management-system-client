@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { EmployeeDashboardComponent } from './employee-dashboard.component';
@@ -18,7 +19,8 @@ import { EmployeeRoutingModule } from './employee-routing.module';
   imports: [
     CommonModule,
     EmployeeRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     EmployeeDashboardComponent,

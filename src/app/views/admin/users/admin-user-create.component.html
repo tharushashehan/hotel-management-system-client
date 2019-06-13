@@ -4,79 +4,104 @@
   <div class="card-header">
     <strong>Create User</strong> user
   </div>
+  <form [formGroup] = "UserForm"  method="post" enctype="multipart/form-data" class="form-horizontal" (ngSubmit) = "onClickSubmit(UserForm.value)">
   <div class="card-body">
-    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
 
       <div class="form-group row">
         <label class="col-md-3 col-form-label" for="em_id">Employee ID</label>
         <div class="col-md-9">
-          <input type="text" id="em_id" name="em_id" class="form-control" placeholder="Employee ID">
+          <input type="text" id="em_id" name="userId" class="form-control" placeholder="Employee ID" formControlName ="userId" [ngClass]="{ 'is-invalid': submitted && f.userId.errors }">
+          <div *ngIf="submitted && f.userId.errors" class="invalid-feedback">
+            <div *ngIf="f.userId.errors.required" >User ID is required</div>
+          </div>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-md-3 col-form-label" for="em_fname">Employee First Name</label>
         <div class="col-md-9">
-          <input type="text" id="em_fname" name="em_fname" class="form-control" placeholder="First Name">
+          <input type="text" id="em_fname" name="userFName" class="form-control" placeholder="First Name" formControlName ="userFName" [ngClass]="{ 'is-invalid': submitted && f.userFName.errors }">
+          <div *ngIf="submitted && f.userFName.errors" class="invalid-feedback">
+            <div *ngIf="f.userFName.errors.required" >First Name is required</div>
+          </div>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-md-3 col-form-label" for="em_lname">Employee Last Name</label>
         <div class="col-md-9">
-          <input type="text" id="em_lname" name="em_lname" class="form-control" placeholder="Last Name">
+          <input type="text" id="em_lname" name="userLName" class="form-control" placeholder="Last Name" formControlName ="userLName" [ngClass]="{ 'is-invalid': submitted && f.userLName.errors }">
+          <div *ngIf="submitted && f.userLName.errors" class="invalid-feedback">
+            <div *ngIf="f.userLName.errors.required" >Last Name is required</div>
+          </div>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-md-3 col-form-label" for="em_nic">Employee NIC</label>
         <div class="col-md-9">
-          <input type="text" id="em_nic" name="em_nic" class="form-control" placeholder="NIC">
+          <input type="text" id="em_nic" name="userNIC" class="form-control" placeholder="NIC" formControlName ="userNIC" [ngClass]="{ 'is-invalid': submitted && f.userNIC.errors }">
+          <div *ngIf="submitted && f.userNIC.errors" class="invalid-feedback">
+            <div *ngIf="f.userNIC.errors.required" >User NIC is required</div>
+          </div>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-md-3 col-form-label" for="em_email">Employee Email address</label>
         <div class="col-md-9">
-          <input type="email" id="em_email" name="em_email" class="form-control" placeholder="Email Address">
+          <input type="email" id="em_email" name="userEmail" class="form-control" placeholder="Email Address" formControlName ="userEmail" [ngClass]="{ 'is-invalid': submitted && f.userEmail.errors }">
+          <div *ngIf="submitted && f.userEmail.errors" class="invalid-feedback">
+            <div *ngIf="f.userEmail.errors.required" >Email address is required</div>
+          </div>
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-md-3 col-form-label" for="room_type">Employee Type</label>
+        <label class="col-md-3 col-form-label" for="em_type">Employee Type</label>
         <div class="col-md-9">
-          <select id="em_type" name="em_type" class="form-control">
+          <select id="em_type" name="userType" class="form-control" formControlName ="userType" placeholder="Employee type">
             <option value="0">Select a type</option>
-            <option value="1">Option #1</option>
-            <option value="2">Option #2</option>
-            <option value="3">Option #3</option>
+            <option value="Admin">Admin</option>
+            <option value="Employee">Employee</option>
           </select>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-md-3 col-form-label" for="em_address">Employee Address</label>
         <div class="col-md-9">
-          <textarea id="em_address" name="em_address" rows="6" class="form-control" placeholder="Address.."></textarea>
+          <textarea id="em_address" name="userAddrs" rows="6" class="form-control" placeholder="Address.." formControlName ="userAddrs" [ngClass]="{ 'is-invalid': submitted && f.userAddrs.errors }"></textarea>
+          <div *ngIf="submitted && f.userAddrs.errors" class="invalid-feedback">
+            <div *ngIf="f.userAddrs.errors.required" >Room ID is required</div>
+          </div>
         </div>
       </div>
-      <div class="form-group row">
-        <label class="col-md-3 col-form-label" for="em_pass">Password</label>
-        <div class="col-md-9">
-          <input type="password" id="em_pass" name="em_pass" class="form-control" placeholder="Price">
-        </div>
-      </div>
+      <!--<div class="form-group row">-->
+        <!--<label class="col-md-3 col-form-label" for="em_pass">Password</label>-->
+        <!--<div class="col-md-9">-->
+          <!--<input type="password" id="em_pass" name="em_pass" class="form-control" placeholder="Price" formControlName ="room_type">-->
+          <!--<div *ngIf="submitted && f.room_id.errors" class="invalid-feedback">-->
+            <!--<div *ngIf="f.room_id.errors.required" >Room ID is required</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
       <div class="form-group row">
         <label class="col-md-3 col-form-label" for="em_profile_pic">Profile Pic</label>
         <div class="col-md-9">
-          <input type="file" id="em_profile_pic" name="em_profile_pic" multiple>
+          <input type="file" id="em_profile_pic" name="userImage" multiple formControlName ="userImage" [ngClass]="{ 'is-invalid': submitted && f.userImage.errors }">
+          <div *ngIf="submitted && f.userImage.errors" class="invalid-feedback">
+            <div *ngIf="f.userImage.errors.required" >Room ID is required</div>
+          </div>
         </div>
       </div>
 
-    </form>
   </div>
   <div class="card-footer">
     <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
     <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
   </div>
+  </form>
+
 </div>
 </div>
 </div>
 
+<pre>{{UserForm.valid| json }}</pre>
 
 <div class="row">
   <div class="col-md-12">
@@ -96,7 +121,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+
+            <tr *ngFor="let room of rooms_data">
               <td class="text-center">
                 <div class="avatar">
                   <img src="assets/img/avatars/1.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
@@ -133,192 +159,7 @@
                 <strong>10 sec ago</strong>
               </td>
             </tr>
-            <tr>
-              <td class="text-center">
-                <div class="avatar">
-                  <img src="assets/img/avatars/2.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                  <span class="avatar-status badge-danger"></span>
-                </div>
-              </td>
-              <td>
-                <div>Avram Tarasios</div>
-                <div class="small text-muted">
 
-                  <span>Recurring</span> | Registered: Jan 1, 2015
-                </div>
-              </td>
-              <td class="text-center">
-                <i class="flag-icon flag-icon-br h4 mb-0" title="br" id="br"></i>
-              </td>
-              <td>
-                <div class="clearfix">
-                  <div class="float-left">
-                    <strong>10%</strong>
-                  </div>
-                  <div class="float-right">
-                    <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                  </div>
-                </div>
-                <div class="progress progress-xs">
-                  <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </td>
-              <td class="text-center">
-                <i class="fa fa-cc-visa" style="font-size:24px"></i>
-              </td>
-              <td>
-                <div class="small text-muted">Last login</div>
-                <strong>5 minutes ago</strong>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-center">
-                <div class="avatar">
-                  <img src="assets/img/avatars/3.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                  <span class="avatar-status badge-warning"></span>
-                </div>
-              </td>
-              <td>
-                <div>Quintin Ed</div>
-                <div class="small text-muted">
-                  <span>New</span> | Registered: Jan 1, 2015
-                </div>
-              </td>
-              <td class="text-center">
-                <i class="flag-icon flag-icon-in h4 mb-0" title="in" id="in"></i>
-              </td>
-              <td>
-                <div class="clearfix">
-                  <div class="float-left">
-                    <strong>74%</strong>
-                  </div>
-                  <div class="float-right">
-                    <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                  </div>
-                </div>
-                <div class="progress progress-xs">
-                  <div class="progress-bar bg-warning" role="progressbar" style="width: 74%" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </td>
-              <td class="text-center">
-                <i class="fa fa-cc-stripe" style="font-size:24px"></i>
-              </td>
-              <td>
-                <div class="small text-muted">Last login</div>
-                <strong>1 hour ago</strong>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-center">
-                <div class="avatar">
-                  <img src="assets/img/avatars/4.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                  <span class="avatar-status badge-secondary"></span>
-                </div>
-              </td>
-              <td>
-                <div>Enéas Kwadwo</div>
-                <div class="small text-muted">
-                  <span>New</span> | Registered: Jan 1, 2015
-                </div>
-              </td>
-              <td class="text-center">
-                <i class="flag-icon flag-icon-fr h4 mb-0" title="fr" id="fr"></i>
-              </td>
-              <td>
-                <div class="clearfix">
-                  <div class="float-left">
-                    <strong>98%</strong>
-                  </div>
-                  <div class="float-right">
-                    <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                  </div>
-                </div>
-                <div class="progress progress-xs">
-                  <div class="progress-bar bg-danger" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </td>
-              <td class="text-center">
-                <i class="fa fa-paypal" style="font-size:24px"></i>
-              </td>
-              <td>
-                <div class="small text-muted">Last login</div>
-                <strong>Last month</strong>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-center">
-                <div class="avatar">
-                  <img src="assets/img/avatars/5.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                  <span class="avatar-status badge-success"></span>
-                </div>
-              </td>
-              <td>
-                <div>Agapetus Tadeáš</div>
-                <div class="small text-muted">
-                  <span>New</span> | Registered: Jan 1, 2015
-                </div>
-              </td>
-              <td class="text-center">
-                <i class="flag-icon flag-icon-es h4 mb-0" title="es" id="es"></i>
-              </td>
-              <td>
-                <div class="clearfix">
-                  <div class="float-left">
-                    <strong>22%</strong>
-                  </div>
-                  <div class="float-right">
-                    <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                  </div>
-                </div>
-                <div class="progress progress-xs">
-                  <div class="progress-bar bg-info" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </td>
-              <td class="text-center">
-                <i class="fa fa-google-wallet" style="font-size:24px"></i>
-              </td>
-              <td>
-                <div class="small text-muted">Last login</div>
-                <strong>Last week</strong>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-center">
-                <div class="avatar">
-                  <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                  <span class="avatar-status badge-danger"></span>
-                </div>
-              </td>
-              <td>
-                <div>Friderik Dávid</div>
-                <div class="small text-muted">
-                  <span>New</span> | Registered: Jan 1, 2015
-                </div>
-              </td>
-              <td class="text-center">
-                <i class="flag-icon flag-icon-pl h4 mb-0" title="pl" id="pl"></i>
-              </td>
-              <td>
-                <div class="clearfix">
-                  <div class="float-left">
-                    <strong>43%</strong>
-                  </div>
-                  <div class="float-right">
-                    <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                  </div>
-                </div>
-                <div class="progress progress-xs">
-                  <div class="progress-bar bg-success" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </td>
-              <td class="text-center">
-                <i class="fa fa-cc-amex" style="font-size:24px"></i>
-              </td>
-              <td>
-                <div class="small text-muted">Last login</div>
-                <strong>Yesterday</strong>
-              </td>
-            </tr>
             </tbody>
           </table>
         </div>
