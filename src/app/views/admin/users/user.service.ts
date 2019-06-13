@@ -11,11 +11,11 @@ export class UserService {
     constructor(private http: HttpClient) {}
 
     getUsers() {
-        return this.http.get<any>(environment.api_url + '/users/');
+        return this.http.get<any>(environment.api_url + '/user/user-list');
     }
 
     submitUser($payload) {
-        return this.http.post<any>(environment.api_url + '/user/', $payload);
+        return this.http.post<any>(environment.api_url + '/user/create', $payload);
     }
 
 }

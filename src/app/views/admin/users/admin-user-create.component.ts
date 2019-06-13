@@ -22,7 +22,15 @@ export class AdminUserCreateComponent implements OnInit {
 
     this.userService.getUsers()
         .pipe(first())
-        .subscribe(users => this.users_data = users);
+        .subscribe(users => {
+
+          this.users_data = users;
+
+        },
+        error => {
+          this.error = error;
+          this.loading = false;
+        });
 
     this.UserForm = new FormGroup({
       userId: new FormControl('', Validators.compose([
@@ -57,7 +65,6 @@ export class AdminUserCreateComponent implements OnInit {
   get f() { return this.UserForm.controls; }
 
   onClickSubmit(userdata) {
-alert('fds');
 
     this.submitted = true;
 
