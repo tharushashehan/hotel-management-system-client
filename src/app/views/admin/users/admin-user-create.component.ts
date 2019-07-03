@@ -2,7 +2,9 @@ import { Component , OnInit } from '@angular/core';
 import { UserService } from './user.service';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   templateUrl: 'admin-user-create.component.html'
@@ -16,11 +18,21 @@ export class AdminUserCreateComponent implements OnInit {
   error: string;
 
   users_data = [];
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private toastr: ToastrService, private route: ActivatedRoute) {
+
+    if (this.route.snapshot.queryParamMap.get('registered')) {
+        this.toastr.success('User created successfully', 'Success!');
+        this.router.navigate(['/admin/users/create']);
+    }
+  }
 
   ngOnInit() {
 
-    this.userService.getUsers()
+    // this.route.queryParams.subscribe(params => {
+    //  console.log(params);
+    // });
+
+      this.userService.getUsers()
         .pipe(first())
         .subscribe(users => {
 
@@ -78,9 +90,11 @@ export class AdminUserCreateComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
-                this.router.navigate(['/rooms'], { queryParams: { registered: true }});
+                this.router.navigate(['/admin/users/create'], { queryParams: { registered: true }});
+                window.location.reload();
               },
               error => {
+                this.toastr.error('Can not create user', 'Error!');
                 this.error = error;
                 this.loading = false;
               });
