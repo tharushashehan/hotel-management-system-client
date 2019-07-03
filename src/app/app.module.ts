@@ -65,7 +65,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    FormsModule,
+    //FormsModule,
     HttpClientModule
   ],
   declarations: [
