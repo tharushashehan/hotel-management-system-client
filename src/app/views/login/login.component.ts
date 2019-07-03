@@ -27,11 +27,11 @@ export class LoginComponent implements OnInit {
       if (this.loginService.currentUserValue.userType === 'admin') {
         this.router.navigate(['/admin']);
       } else {
-        if (data.userType === 'admin') {
-          this.router.navigate(['/admin']);
-        } else {
-          this.router.navigate(['/login']);
-        }
+        // if (data.userType === 'admin') {
+        //   this.router.navigate(['/admin']);
+        // } else {
+        //   this.router.navigate(['/login']);
+        // }
       }
     } else{
       this.router.navigate(['/login']);

@@ -13,7 +13,7 @@ export class DefaultLayoutComponent implements OnDestroy {
   public sidebarMinimized = true;
   private changes: MutationObserver;
   public element: HTMLElement;
-  constructor(@Inject(DOCUMENT) _document?: any , private loginService: LoginService , private router: Router,) {
+  constructor(@Inject(DOCUMENT) _document?: any , private loginService: LoginService , private router: Router) {
 
     this.changes = new MutationObserver((mutations) => {
       this.sidebarMinimized = _document.body.classList.contains('sidebar-minimized');
