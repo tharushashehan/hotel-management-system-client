@@ -17,23 +17,23 @@ export class LoginComponent implements OnInit {
   loading = false;
   error: string;
   returnUrl: string;
+  $user_data = {};
 
 
   constructor(private router: Router, private loginService: LoginService) {
     // redirect to home if already logged in
 
-    if (this.loginService.currentUserValue) {
-
-      if (this.loginService.currentUserValue.userType === 'admin') {
-        this.router.navigate(['/admin']);
-      } else {
-        if (data.userType === 'admin') {
+    if (this.loginService.currentUserValue && this.loginService.currentUserValue.userType) {
+        if (this.loginService.currentUserValue.userType === 'admin') {
           this.router.navigate(['/admin']);
         } else {
-          this.router.navigate(['/login']);
+            if (this.loginService.currentUserValue.userType === 'employee') {
+              this.router.navigate(['/admin']);
+            } else {
+              this.router.navigate(['/employee']);
+            }
         }
-      }
-    } else{
+    } else {
       this.router.navigate(['/login']);
     }
 
@@ -72,6 +72,7 @@ export class LoginComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
+                this.$user_data = data;
                 if (data.userType === 'employee') {
                   this.router.navigate(['/employee']);
                 } else{
