@@ -1,3 +1,4 @@
+
 interface NavAttributes {
   [propName: string]: any;
 }
@@ -29,7 +30,7 @@ export interface NavData {
   wrapper?: NavWrapper;
 }
 
-export const navItems: NavData[] = [
+export const navItemsAdmin: NavData[] = [
   {
     name: 'Dashboard',
     url: '/dashboard',
@@ -70,6 +71,9 @@ export const navItems: NavData[] = [
         icon: 'icon-user'
       }]
   },
+];
+
+export const navItemsEmployee: NavData[] = [
   {
     title: true,
     name: 'Employee'

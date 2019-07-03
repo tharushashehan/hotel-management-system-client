@@ -7,15 +7,15 @@ import { environment } from '../../../../environments/environment';
 
 
 @Injectable()
-export class RoomService {
+export class UserService {
     constructor(private http: HttpClient) {}
 
-
-    getRooms() {
-        return this.http.get<any>(environment.api_url + '/rooms/');
+    getUsers() {
+        return this.http.get<any>(environment.api_url + '/user/user-list');
     }
 
-    submitRoom($payload) {
-        return this.http.post<any>(environment.api_url + '/room/', $payload);
+    submitUser($payload) {
+        return this.http.post<any>(environment.api_url + '/user/create', $payload);
     }
+
 }

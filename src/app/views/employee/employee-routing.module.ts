@@ -37,14 +37,14 @@ const routes: Routes = [
         path: 'room-booking',
         component: EmployeeRoomBookingComponent,
         data: {
-          title: 'Apply Leave'
+          title: 'Room Booking'
         }
       },
       {
         path: 'room-details',
         component: EmployeeRoomDetailsComponent,
         data: {
-          title: 'Apply Leave'
+          title: 'Room Details'
         }
       }
     ]
