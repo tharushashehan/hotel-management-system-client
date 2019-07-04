@@ -14,8 +14,20 @@ export class UserService {
         return this.http.get<any>(environment.api_url + '/user/user-list');
     }
 
+    getUser(id) {
+        return this.http.get<any>(environment.api_url + '/user//single-user/' + id);
+    }
+
     submitUser($payload) {
-        return this.http.post<any>(environment.api_url + '/user/create', $payload);
+        return this.http.post(environment.api_url + '/user/create', $payload);
+    }
+
+    deleteUser(id) {
+        return this.http.post(environment.api_url + `/user/delete-user/` + id, {});
+    }
+
+    updateUser(id, $payload) {
+        return this.http.post(environment.api_url + `/user/put-user/` + id, $payload);
     }
 
 }

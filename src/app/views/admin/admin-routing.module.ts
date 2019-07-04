@@ -19,7 +19,7 @@ const routes: Routes = [
       },
       {
         path: 'dashboard',
-        component: AdminComponent,
+        loadChildren: './views/dashboard/dashboard.module#DashboardModule',
         data: {
           title: 'dashboard'
         }

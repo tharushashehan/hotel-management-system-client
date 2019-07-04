@@ -56,9 +56,8 @@
         <label class="col-md-3 col-form-label" for="em_type">Employee Type</label>
         <div class="col-md-9">
           <select id="em_type" name="userType" class="form-control" formControlName ="userType" placeholder="Employee type">
-            <option value="0">Select a type</option>
-            <option value="Admin">Admin</option>
-            <option value="Employee">Employee</option>
+            <option value="Admin">admin</option>
+            <option value="Employee">employee</option>
           </select>
         </div>
       </div>
@@ -67,7 +66,7 @@
         <div class="col-md-9">
           <textarea id="em_address" name="userAddrs" rows="6" class="form-control" placeholder="Address.." formControlName ="userAddrs" [ngClass]="{ 'is-invalid': submitted && f.userAddrs.errors }"></textarea>
           <div *ngIf="submitted && f.userAddrs.errors" class="invalid-feedback">
-            <div *ngIf="f.userAddrs.errors.required" >Room ID is required</div>
+            <div *ngIf="f.userAddrs.errors.required" >Employee address is required</div>
           </div>
         </div>
       </div>
@@ -80,20 +79,21 @@
           <!--</div>-->
         <!--</div>-->
       <!--</div>-->
-      <div class="form-group row">
+      <div class="form-group row" >
         <label class="col-md-3 col-form-label" for="em_profile_pic">Profile Pic</label>
         <div class="col-md-9">
           <input type="file" id="em_profile_pic" name="userImage" multiple formControlName ="userImage" [ngClass]="{ 'is-invalid': submitted && f.userImage.errors }">
           <div *ngIf="submitted && f.userImage.errors" class="invalid-feedback">
-            <div *ngIf="f.userImage.errors.required" >Room ID is required</div>
+            <div *ngIf="f.userImage.errors.required" >Profile pic is required</div>
           </div>
         </div>
       </div>
 
   </div>
-  <div class="card-footer">
-    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
-    <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+  <div class="card-footer" >
+    <button type="submit" class="btn btn-sm btn-primary" *ngIf="!isEdit"><i class="fa fa-dot-circle-o"></i> Submit</button>
+    <button type="submit" class="btn btn-sm btn-success" *ngIf="isEdit"><i class="fa fa-dot-circle-o"></i> Update</button>
+    <button type="reset" class="btn btn-sm btn-secondary"><i class="fa fa-ban"></i> Reset</button>
   </div>
   </form>
 
@@ -101,7 +101,6 @@
 </div>
 </div>
 
-<pre>{{UserForm.valid| json }}</pre>
 
 <div class="row">
   <div class="col-md-12">
@@ -118,7 +117,7 @@
               <th>NIC Number</th>
               <th class="text-center">Type</th>
               <th>Address</th>
-              <th class="text-center">Actions</th>
+              <th >Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -131,9 +130,9 @@
                 </div>
               </td>
               <td>
-                <div>{{user.userFName+' ' +userLName}}</div>
+                <div>{{user.userFName+' ' +user.userLName}}</div>
                 <div class="small text-muted">
-                  <span>New</span> | Registered: Jan 1, 2015
+                  <!--<span>New</span> | Registered: Jan 1, 2015-->
                 </div>
               </td>
               <td class="text-center">
@@ -155,7 +154,9 @@
                 <div>{{user.userAddrs}}</div>
               </td>
               <td>
-                <div>{{user.userAddrs}}</div>
+                <button type="reset" class="btn btn-sm btn-warning"  (click)="onClickEdit(user.id)" ><i class="cui-wrench icons"></i> Edit</button>
+                <button type="reset" class="btn btn-sm btn-danger"  (click)="onClickDelete(user.id)" ><i class="cui-circle-x  icons"></i> Delete</button>
+
               </td>
             </tr>
 
