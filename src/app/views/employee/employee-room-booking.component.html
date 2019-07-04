@@ -1,0 +1,66 @@
+
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header">
+      <strong>Room Booking</strong> Room
+    </div>
+    <div class="card-body">
+      <form [formGroup] = "BookingForm"  method="post" enctype="multipart/form-data" class="form-horizontal" (ngSubmit) = "onClickSubmit(BookingForm.value)">
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="room_no">Room No</label>
+          <div class="col-md-9">
+            <input type="text" id="room_no" name="roomNo" class="form-control" placeholder="Room No" formControlName ="roomNo" [ngClass]="{ 'is-invalid': submitted && f.roomNo.errors }">
+            <div *ngIf="submitted && f.roomNo.errors" class="invalid-feedback">
+              <div *ngIf="f.roomNo.errors.required" >Room No is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="room_type">Room Type</label>
+          <div class="col-md-9">
+            <select id="room_type" name="roomType" class="form-control" formControlName ="roomType" [ngClass]="{ 'is-invalid': submitted && f.roomType.errors }">
+              <option value="">Select a room</option>
+              <option value="Single">Single</option>
+              <option value="Double">Double</option>
+              <option value="Queen">Queen</option>
+              <option value="King">King</option>
+            </select>
+          </div>
+          <div *ngIf="submitted && f.roomType.errors" class="invalid-feedback">
+            <div *ngIf="f.roomType.errors.required" >Room Type is required</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="startingDate">Start Date</label>
+          <div class="col-md-9">
+            <input class="form-control" id="startingDate" type="date" name="startingDate" placeholder="startDate" formControlName ="startingDate" [ngClass]="{ 'is-invalid': submitted && f.startingDate.errors }">
+            <div *ngIf="submitted && f.startingDate.errors" class="invalid-feedback">
+              <div *ngIf="f.startingDate.errors.required" >Start Date is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="endDate">End Date</label>
+          <div class="col-md-9">
+            <input class="form-control" id="endDate" type="date" name="endDate" placeholder="date" formControlName ="endDate" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }">
+            <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
+              <div *ngIf="f.endDate.errors.required" >End Date is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="description">Special Note</label>
+          <div class="col-md-9">
+            <textarea id="description" name="remark" rows="9" class="form-control" placeholder="Description.." formControlName ="remark"></textarea>
+          </div>
+        </div>
+
+          <div class="card-footer">
+            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+            <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>

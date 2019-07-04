@@ -1,0 +1,168 @@
+<div class="row">
+<div class="col-md-12">
+<div class="card">
+  <div class="card-header">
+    <strong>Create User</strong> user
+  </div>
+  <form [formGroup] = "UserForm"  method="post" enctype="multipart/form-data" class="form-horizontal" (ngSubmit) = "onClickSubmit(UserForm.value)">
+  <div class="card-body">
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="em_id">Employee ID</label>
+        <div class="col-md-9">
+          <input type="text" id="em_id" name="userId" class="form-control" placeholder="Employee ID" formControlName ="userId" [ngClass]="{ 'is-invalid': submitted && f.userId.errors }">
+          <div *ngIf="submitted && f.userId.errors" class="invalid-feedback">
+            <div *ngIf="f.userId.errors.required" >User ID is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="em_fname">Employee First Name</label>
+        <div class="col-md-9">
+          <input type="text" id="em_fname" name="userFName" class="form-control" placeholder="First Name" formControlName ="userFName" [ngClass]="{ 'is-invalid': submitted && f.userFName.errors }">
+          <div *ngIf="submitted && f.userFName.errors" class="invalid-feedback">
+            <div *ngIf="f.userFName.errors.required" >First Name is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="em_lname">Employee Last Name</label>
+        <div class="col-md-9">
+          <input type="text" id="em_lname" name="userLName" class="form-control" placeholder="Last Name" formControlName ="userLName" [ngClass]="{ 'is-invalid': submitted && f.userLName.errors }">
+          <div *ngIf="submitted && f.userLName.errors" class="invalid-feedback">
+            <div *ngIf="f.userLName.errors.required" >Last Name is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="em_nic">Employee NIC</label>
+        <div class="col-md-9">
+          <input type="text" id="em_nic" name="userNIC" class="form-control" placeholder="NIC" formControlName ="userNIC" [ngClass]="{ 'is-invalid': submitted && f.userNIC.errors }">
+          <div *ngIf="submitted && f.userNIC.errors" class="invalid-feedback">
+            <div *ngIf="f.userNIC.errors.required" >User NIC is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="em_email">Employee Email address</label>
+        <div class="col-md-9">
+          <input type="email" id="em_email" name="userEmail" class="form-control" placeholder="Email Address" formControlName ="userEmail" [ngClass]="{ 'is-invalid': submitted && f.userEmail.errors }">
+          <div *ngIf="submitted && f.userEmail.errors" class="invalid-feedback">
+            <div *ngIf="f.userEmail.errors.required" >Email address is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="em_type">Employee Type</label>
+        <div class="col-md-9">
+          <select id="em_type" name="userType" class="form-control" formControlName ="userType" placeholder="Employee type">
+            <option value="0">Select a type</option>
+            <option value="Admin">Admin</option>
+            <option value="Employee">Employee</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="em_address">Employee Address</label>
+        <div class="col-md-9">
+          <textarea id="em_address" name="userAddrs" rows="6" class="form-control" placeholder="Address.." formControlName ="userAddrs" [ngClass]="{ 'is-invalid': submitted && f.userAddrs.errors }"></textarea>
+          <div *ngIf="submitted && f.userAddrs.errors" class="invalid-feedback">
+            <div *ngIf="f.userAddrs.errors.required" >Room ID is required</div>
+          </div>
+        </div>
+      </div>
+      <!--<div class="form-group row">-->
+        <!--<label class="col-md-3 col-form-label" for="em_pass">Password</label>-->
+        <!--<div class="col-md-9">-->
+          <!--<input type="password" id="em_pass" name="em_pass" class="form-control" placeholder="Price" formControlName ="room_type">-->
+          <!--<div *ngIf="submitted && f.room_id.errors" class="invalid-feedback">-->
+            <!--<div *ngIf="f.room_id.errors.required" >Room ID is required</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="em_profile_pic">Profile Pic</label>
+        <div class="col-md-9">
+          <input type="file" id="em_profile_pic" name="userImage" multiple formControlName ="userImage" [ngClass]="{ 'is-invalid': submitted && f.userImage.errors }">
+          <div *ngIf="submitted && f.userImage.errors" class="invalid-feedback">
+            <div *ngIf="f.userImage.errors.required" >Room ID is required</div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+  <div class="card-footer">
+    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+    <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+  </div>
+  </form>
+
+</div>
+</div>
+</div>
+
+<pre>{{UserForm.valid| json }}</pre>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+
+      <div class="card-body">
+        <div class="row">
+          <table class="table table-responsive-sm table-hover table-outline mb-0">
+            <thead class="thead-light">
+            <tr>
+              <th class="text-center"><i class="icon-people"></i></th>
+              <th>User</th>
+              <th class="text-center">Email Address</th>
+              <th>NIC Number</th>
+              <th class="text-center">Type</th>
+              <th>Address</th>
+              <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let user of users_data">
+              <td class="text-center">
+                <div class="avatar">
+                  <img src="assets/img/avatars/1.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                  <span class="avatar-status badge-success"></span>
+                </div>
+              </td>
+              <td>
+                <div>{{user.userFName+' ' +userLName}}</div>
+                <div class="small text-muted">
+                  <span>New</span> | Registered: Jan 1, 2015
+                </div>
+              </td>
+              <td class="text-center">
+                <div>{{user.userEmail}}</div>
+              </td>
+              <td>
+                <div class="clearfix">
+                  <div class="float-left">
+                    <div>{{user.userNIC}}</div>
+                  </div>
+
+                </div>
+
+              </td>
+              <td class="text-center">
+                <div>{{user.userType}}</div>
+              </td>
+              <td>
+                <div>{{user.userAddrs}}</div>
+              </td>
+              <td>
+                <div>{{user.userAddrs}}</div>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
