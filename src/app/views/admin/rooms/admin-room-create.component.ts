@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RoomService } from './room.service';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { Router } from '@angular/router';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   templateUrl: 'admin-room-create.component.html'
 })
@@ -18,7 +18,11 @@ export class AdminRoomCreateComponent implements OnInit {
 
   rooms_data = [];
 
-  constructor(private room: RoomService, private router: Router) {
+  constructor(private room: RoomService, private router: Router, private toastr: ToastrService, private route: ActivatedRoute) {
+    if (this.route.snapshot.queryParamMap.get('registered')) {
+      this.toastr.success('Room created successfully', 'Success!');
+      this.router.navigate(['/admin/rooms/create']);
+  }
   }
 
   ngOnInit() {
@@ -28,18 +32,15 @@ export class AdminRoomCreateComponent implements OnInit {
         .subscribe(users => this.rooms_data = users);
 
     this.createRoom = new FormGroup({
-      room_id: new FormControl('', Validators.compose([
+      roomNo: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      room_no: new FormControl('', Validators.compose([
+      roomType: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      room_type: new FormControl('', Validators.compose([
-        Validators.required
-      ])),
-      description: new FormControl('', Validators.compose([])),
-      room_image: new FormControl(),
-      price_pd: new FormControl('', Validators.compose([
+      roomDiscription: new FormControl('', Validators.compose([])),
+      roomImage: new FormControl(),
+      roomPrice: new FormControl('', Validators.compose([
         Validators.required
       ])),
     });
@@ -50,8 +51,9 @@ export class AdminRoomCreateComponent implements OnInit {
   get f() { return this.createRoom.controls; }
 
   onClickSubmit(roomdata) {
+console.log(roomdata);
 
-
+    roomdata.roomAvailability = true;
     this.submitted = true;
 
     // stop here if form is invalid
@@ -63,10 +65,12 @@ export class AdminRoomCreateComponent implements OnInit {
       this.room.submitRoom(roomdata)
           .pipe(first())
           .subscribe(
-              data => {
-                this.router.navigate(['/rooms'], { queryParams: { registered: true }});
+              async data => {
+                await this.router.navigate(['/admin/rooms/create'], { queryParams: { registered: true }});
+                window.location.reload();
               },
               error => {
+                this.toastr.error('Can not create room', 'Error!');
                 this.error = error;
                 this.loading = false;
               });
