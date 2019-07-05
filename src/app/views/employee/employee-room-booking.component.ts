@@ -37,7 +37,7 @@ export class EmployeeRoomBookingComponent implements OnInit {
       roomNo: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      startingDate: new FormControl('', Validators.compose([
+      startDate: new FormControl('', Validators.compose([
         Validators.required
       ])),
       endDate: new FormControl('', Validators.compose([

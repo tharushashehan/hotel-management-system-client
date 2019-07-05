@@ -31,7 +31,10 @@ export class EmployeeService {
     }
 
     submitBooking($payload, $roomID) {
-        console.log(environment.api_url + 'room/' + $roomID + '/checkin');
-        return this.http.post<any>(environment.api_url + 'room/' + $roomID + '/checkin', $payload);
+        //console.log('checkin post request url : '+environment.api_url + '/rooms/' + $roomID + '/checkin');
+        //console.log(this.http.post<any>(environment.api_url + 'room/' + $roomID + '/checkin', $payload));
+        delete $payload.roomNo;
+        return this.http.post(environment.api_url + '/rooms/' + $roomID + '/checkin/', $payload);
+        
     }
 }

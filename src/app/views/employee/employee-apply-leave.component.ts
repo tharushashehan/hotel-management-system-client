@@ -2,8 +2,8 @@ import { Component , OnInit  } from '@angular/core';
 import { EmployeeService } from './employee.service';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { Router } from '@angular/router';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   templateUrl: 'employee-apply-leave.component.html'
 })
@@ -17,7 +17,12 @@ export class EmployeeApplyLeaveComponent implements OnInit {
 
   leaves_data = [];
 
-  constructor(private employeeService: EmployeeService, private router: Router) {
+  constructor(private employeeService: EmployeeService, private router: Router, private toastr: ToastrService, private route: ActivatedRoute) {
+    if (this.route.snapshot.queryParamMap.get('registered')) {
+      this.toastr.success('leave applied successfully', 'Success!');
+      this.router.navigate(['/employee/apply-leave']);
+  }
+  
   }
 
   ngOnInit() {
@@ -76,10 +81,12 @@ export class EmployeeApplyLeaveComponent implements OnInit {
       this.employeeService.submitLeave(leavedata)
           .pipe(first())
           .subscribe(
-              data => {
-                this.router.navigate(['/employee/apply-leave'], {queryParams: {registered: true}});
+              async data => {
+                await this.router.navigate(['/employee/apply-leave'], {queryParams: {registered: true}});
+                window.location.reload();
               },
               error => {
+                this.toastr.error('Can not apply leave', 'Error!');
                 this.error = error;
                 this.loading = false;
               });
