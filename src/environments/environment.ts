@@ -6,5 +6,7 @@
 export const environment = {
   production: false,
   api_url: 'http://localhost:8080'
+  //api_url: 'http://ec2-35-165-136-84.us-west-2.compute.amazonaws.com:8080'
+
 };
 
