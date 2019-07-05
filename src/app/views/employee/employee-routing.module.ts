@@ -21,7 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'dashboard',
-        component: EmployeeDashboardComponent,
+        loadChildren: './views/dashboard/dashboard.module#DashboardModule',
         data: {
           title: 'Dashboard'
         }

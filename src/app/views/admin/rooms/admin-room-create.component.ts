@@ -39,7 +39,7 @@ export class AdminRoomCreateComponent implements OnInit {
         Validators.required
       ])),
       roomDiscription: new FormControl('', Validators.compose([])),
-      roomImage: new FormControl(),
+      // roomImage: new FormControl(),
       roomPrice: new FormControl('', Validators.compose([
         Validators.required
       ])),

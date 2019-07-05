@@ -12,12 +12,12 @@ export class EmployeeService {
 
 
     getLeavs() {
-        return this.http.get<any>(environment.api_url + '/rooms/');
+        return this.http.get<any>(environment.api_url + '/leaves/');
     }
 
 
     getBookings() {
-        return this.http.get<any>(environment.api_url + '/rooms/');
+        return this.http.get<any>(environment.api_url + '/checkin/');
     }
 
 
@@ -27,10 +27,10 @@ export class EmployeeService {
 
 
     submitLeave($payload) {
-        return this.http.post<any>(environment.api_url + '/room/', $payload);
+        return this.http.post<any>(environment.api_url + '/leaves/', $payload);
     }
 
     submitBooking($payload) {
-        return this.http.post<any>(environment.api_url + '/room/', $payload);
+        return this.http.post<any>(environment.api_url + '/checkin/', $payload);
     }
 }

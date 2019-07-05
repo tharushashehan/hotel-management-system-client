@@ -3,21 +3,24 @@
     <div class="card-header">
       <strong>Apply Leave</strong>
     </div>
-    <form [formGroup] = "LeaveForm"  method="post" enctype="multipart/form-data" class="form-horizontal" (ngSubmit) = "onClickSubmit(LeaveForm.value)">
-    <div class="card-body">
+    <form [formGroup]="LeaveForm" method="post" enctype="multipart/form-data" class="form-horizontal"
+      (ngSubmit)="onClickSubmit(LeaveForm.value)">
+      <div class="card-body">
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="empID">Employee ID</label>
           <div class="col-md-9">
-            <input type="text" id="empID" name="empID" class="form-control" placeholder="Employee ID" formControlName ="empID" [ngClass]="{ 'is-invalid': submitted && f.empID.errors }" >
+            <input type="text" id="empID" name="empID" class="form-control" placeholder="Employee ID"
+              formControlName="empID" [ngClass]="{ 'is-invalid': submitted && f.empID.errors }">
             <div *ngIf="submitted && f.empID.errors" class="invalid-feedback">
-              <div *ngIf="f.empID.errors.required" >Employee ID is required</div>
+              <div *ngIf="f.empID.errors.required">Employee ID is required</div>
             </div>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="leaveType">Leave Type</label>
           <div class="col-md-9">
-            <select id="leaveType" name="leaveType" class="form-control" formControlName ="leaveType" [ngClass]="{ 'is-invalid': submitted && f.leaveType.errors }">
+            <select id="leaveType" name="leaveType" class="form-control" formControlName="leaveType"
+              [ngClass]="{ 'is-invalid': submitted && f.leaveType.errors }">
               <option value="0">Select a Leave Type</option>
               <option>Annual Leave</option>
               <option>Casual Leave</option>
@@ -27,46 +30,105 @@
               <option>No Pay</option>
             </select>
             <div *ngIf="submitted && f.leaveType.errors" class="invalid-feedback">
-              <div *ngIf="f.leaveType.errors.required" >Leave Type is required</div>
+              <div *ngIf="f.leaveType.errors.required">Leave Type is required</div>
             </div>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="leaveDurationType">Leave period</label>
           <div class="col-md-9">
-            <select id="leaveDurationType" name="leaveDurationType" class="form-control" formControlName ="leaveDurationType" [ngClass]="{ 'is-invalid': submitted && f.leaveDurationType.errors }">
+            <select id="leaveDurationType" name="leaveDurationType" class="form-control"
+              formControlName="leaveDurationType" [ngClass]="{ 'is-invalid': submitted && f.leaveDurationType.errors }">
               <option value="0">Select a Leave period</option>
               <option>Half Day</option>
               <option>Full Day</option>
             </select>
             <div *ngIf="submitted && f.leaveDurationType.errors" class="invalid-feedback">
-              <div *ngIf="f.leaveDurationType.errors.required" >Leave Period is required</div>
+              <div *ngIf="f.leaveDurationType.errors.required">Leave Period is required</div>
             </div>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="startingDate">Start Date</label>
           <div class="col-md-9">
-            <input class="form-control" id="startingDate" type="date" name="startingDate" placeholder="start date" formControlName ="startingDate" [ngClass]="{ 'is-invalid': submitted && f.startingDate.errors }">
+            <input class="form-control" id="startingDate" type="date" name="startingDate" placeholder="start date"
+              formControlName="startingDate" [ngClass]="{ 'is-invalid': submitted && f.startingDate.errors }">
             <div *ngIf="submitted && f.startingDate.errors" class="invalid-feedback">
-              <div *ngIf="f.startingDate.errors.required" >Start Date is required</div>
+              <div *ngIf="f.startingDate.errors.required">Start Date is required</div>
             </div>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="endDate">End Date</label>
           <div class="col-md-9">
-            <input class="form-control" id="endDate" type="date" name="endDate" placeholder="end date" formControlName ="endDate" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }">
+            <input class="form-control" id="endDate" type="date" name="endDate" placeholder="end date"
+              formControlName="endDate" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }">
             <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
-              <div *ngIf="f.endDate.errors.required" >End Date is required</div>
+              <div *ngIf="f.endDate.errors.required">End Date is required</div>
             </div>
           </div>
         </div>
-    </div>
-    <div class="card-footer">
-      <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
-      <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
-    </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="remark">remark</label>
+          <div class="col-md-9">
+            <input type="text" id="remark" name="remark" class="form-control" placeholder="remark"
+              formControlName="remark" [ngClass]="{ 'is-invalid': submitted && f.remark.errors }">
+            <div *ngIf="submitted && f.remark.errors" class="invalid-feedback">
+              <div *ngIf="f.remark.errors.required">remark is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+        <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+      </div>
     </form>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+
+      <div class="card-body">
+        <div class="row">
+          <table class="table table-responsive-sm table-hover table-outline mb-0">
+            <thead class="thead-light">
+              <tr>
+                <th class="text-center">Leave Type</th>
+                <th class="text-center">Leave Duration Type</th>
+                <th class="text-center">Starting Date</th>
+                <th class="text-center">End Date</th>
+                <th class="text-center">Remark</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr *ngFor="let leave of leaves_data">
+                <td class="text-center">
+                  {{leave.leaveType}}
+                </td>
+                <td class="text-center">
+                  {{leave.leaveDurationType}}
+                </td>
+                <td class="text-center">
+                  {{leave.startingDate}}
+                </td>
+                <td class="text-center">
+                  {{leave.endDate}}
+                </td>
+                <td class="text-center">
+                  {{leave.remark}}
+                </td>
+
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

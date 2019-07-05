@@ -22,6 +22,16 @@ export class EmployeeApplyLeaveComponent implements OnInit {
 
   ngOnInit() {
 
+    this.employeeService.getLeavs().pipe(first()).subscribe(
+      leaves => {
+        this.leaves_data = leaves
+      }, 
+      error => {
+        this.error = error;
+        this.loading = false;
+      }
+    )
+
     this.LeaveForm = new FormGroup({
       empID: new FormControl('', Validators.compose([
         Validators.required
@@ -50,8 +60,10 @@ export class EmployeeApplyLeaveComponent implements OnInit {
     return this.LeaveForm.controls;
   }
 
-  onClickSubmit(userdata) {
+  onClickSubmit(leavedata) {
 
+    console.log(this.LeaveForm.invalid);
+    console.log(this.LeaveForm);
 
     this.submitted = true;
 
@@ -59,13 +71,13 @@ export class EmployeeApplyLeaveComponent implements OnInit {
     if (this.LeaveForm.invalid) {
       return;
     } else {
-
+      console.log(leavedata);
       this.loading = true;
-      this.employeeService.submitLeave(userdata)
+      this.employeeService.submitLeave(leavedata)
           .pipe(first())
           .subscribe(
               data => {
-                this.router.navigate(['/rooms'], {queryParams: {registered: true}});
+                this.router.navigate(['/employee/apply-leave'], {queryParams: {registered: true}});
               },
               error => {
                 this.error = error;

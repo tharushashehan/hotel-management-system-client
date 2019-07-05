@@ -17,21 +17,6 @@
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="room_type">Room Type</label>
-          <div class="col-md-9">
-            <select id="room_type" name="roomType" class="form-control" formControlName ="roomType" [ngClass]="{ 'is-invalid': submitted && f.roomType.errors }">
-              <option value="">Select a room</option>
-              <option value="Single">Single</option>
-              <option value="Double">Double</option>
-              <option value="Queen">Queen</option>
-              <option value="King">King</option>
-            </select>
-          </div>
-          <div *ngIf="submitted && f.roomType.errors" class="invalid-feedback">
-            <div *ngIf="f.roomType.errors.required" >Room Type is required</div>
-          </div>
-        </div>
-        <div class="form-group row">
           <label class="col-md-3 col-form-label" for="startingDate">Start Date</label>
           <div class="col-md-9">
             <input class="form-control" id="startingDate" type="date" name="startingDate" placeholder="startDate" formControlName ="startingDate" [ngClass]="{ 'is-invalid': submitted && f.startingDate.errors }">
@@ -64,3 +49,48 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+  
+        <div class="card-body">
+          <div class="row">
+            <table class="table table-responsive-sm table-hover table-outline mb-0">
+              <thead class="thead-light">
+                <tr>
+                  <th class="text-center">Check in ID</th>
+                  <th class="text-center">Room No</th>
+                  <th class="text-center">Room type</th>
+                  <th class="text-center">Start Date</th>
+                  <th class="text-center">End Date</th>
+                </tr>
+              </thead>
+              <tbody>
+  
+                <tr *ngFor="let checkin of booking_data">
+                  <td class="text-center">
+                    {{checkin.id}}
+                  </td>
+                  <td class="text-center">
+                    {{checkin.roomDetails.roomNo}}
+                  </td>
+                  <td class="text-center">
+                    {{checkin.roomDetails.roomType}}
+                  </td>
+                  <td class="text-center">
+                    {{checkin.startDate}}
+                  </td>
+                  <td class="text-center">
+                    {{checkin.endDate}}
+                  </td>
+  
+                </tr>
+  
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

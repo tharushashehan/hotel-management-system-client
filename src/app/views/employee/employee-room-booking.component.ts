@@ -22,11 +22,19 @@ export class EmployeeRoomBookingComponent implements OnInit {
 
   ngOnInit() {
 
+    this.employeeService.getBookings().pipe(first()).subscribe(
+      bookin => {
+        console.log(bookin);
+        this.booking_data = bookin
+      }, 
+      error => {
+        this.error = error;
+        this.loading = false;
+      }
+    )
+
     this.BookingForm = new FormGroup({
       roomNo: new FormControl('', Validators.compose([
-        Validators.required
-      ])),
-      roomType: new FormControl('', Validators.compose([
         Validators.required
       ])),
       startingDate: new FormControl('', Validators.compose([
@@ -47,7 +55,7 @@ export class EmployeeRoomBookingComponent implements OnInit {
     return this.BookingForm.controls;
   }
 
-  onClickSubmit(booking_data) {
+  onClickSubmit(bookingdata) {
 
     alert('fef');
     this.submitted = true;
@@ -58,11 +66,11 @@ export class EmployeeRoomBookingComponent implements OnInit {
     } else {
 
       this.loading = true;
-      this.employeeService.submitBooking(booking_data)
+      this.employeeService.submitBooking(bookingdata)
           .pipe(first())
           .subscribe(
               data => {
-                this.router.navigate(['/rooms'], {queryParams: {registered: true}});
+                this.router.navigate(['/employee/room-booking'], {queryParams: {registered: true}});
               },
               error => {
                 this.error = error;
