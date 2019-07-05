@@ -21,7 +21,6 @@ const routes: Routes = [
       },
       {
         path: 'dashboard',
-        loadChildren: './views/dashboard/dashboard.module#DashboardModule',
         data: {
           title: 'Dashboard'
         }

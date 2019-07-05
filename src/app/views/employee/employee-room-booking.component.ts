@@ -66,7 +66,7 @@ export class EmployeeRoomBookingComponent implements OnInit {
     } else {
 
       this.loading = true;
-      this.employeeService.submitBooking(bookingdata)
+      this.employeeService.submitBooking(bookingdata, bookingdata.roomNo)
           .pipe(first())
           .subscribe(
               data => {

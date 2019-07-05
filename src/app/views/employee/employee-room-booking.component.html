@@ -1,96 +1,104 @@
-
 <div class="col-md-12">
   <div class="card">
     <div class="card-header">
       <strong>Room Booking</strong>
     </div>
     <div class="card-body">
-      <form [formGroup] = "BookingForm"  method="post" enctype="multipart/form-data" class="form-horizontal" (ngSubmit) = "onClickSubmit(BookingForm.value)">
+      <form [formGroup]="BookingForm" method="post" enctype="multipart/form-data" class="form-horizontal"
+        (ngSubmit)="onClickSubmit(BookingForm.value)">
 
         <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="room_no">Room No</label>
+          <label class="col-md-3 col-form-label" for="roomNo">Room No</label>
           <div class="col-md-9">
-            <input type="text" id="room_no" name="roomNo" class="form-control" placeholder="Room No" formControlName ="roomNo" [ngClass]="{ 'is-invalid': submitted && f.roomNo.errors }">
+            <input type="text" id="roomNo" name="roomNo" class="form-control" placeholder="Room No"
+              formControlName="roomNo" [ngClass]="{ 'is-invalid': submitted && f.roomNo.errors }">
             <div *ngIf="submitted && f.roomNo.errors" class="invalid-feedback">
-              <div *ngIf="f.roomNo.errors.required" >Room No is required</div>
+              <div *ngIf="f.roomNo.errors.required">Room No is required</div>
             </div>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="startingDate">Start Date</label>
           <div class="col-md-9">
-            <input class="form-control" id="startingDate" type="date" name="startingDate" placeholder="startDate" formControlName ="startingDate" [ngClass]="{ 'is-invalid': submitted && f.startingDate.errors }">
+            <input class="form-control" id="startingDate" type="date" name="startingDate" placeholder="startDate"
+              formControlName="startingDate" [ngClass]="{ 'is-invalid': submitted && f.startingDate.errors }">
             <div *ngIf="submitted && f.startingDate.errors" class="invalid-feedback">
-              <div *ngIf="f.startingDate.errors.required" >Start Date is required</div>
+              <div *ngIf="f.startingDate.errors.required">Start Date is required</div>
             </div>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="endDate">End Date</label>
           <div class="col-md-9">
-            <input class="form-control" id="endDate" type="date" name="endDate" placeholder="date" formControlName ="endDate" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }">
+            <input class="form-control" id="endDate" type="date" name="endDate" placeholder="date"
+              formControlName="endDate" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }">
             <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
-              <div *ngIf="f.endDate.errors.required" >End Date is required</div>
+              <div *ngIf="f.endDate.errors.required">End Date is required</div>
             </div>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="description">Special Note</label>
           <div class="col-md-9">
-            <textarea id="description" name="remark" rows="9" class="form-control" placeholder="Description.." formControlName ="remark"></textarea>
+            <textarea id="description" name="remark" rows="9" class="form-control" placeholder="Description.."
+              formControlName="remark"></textarea>
           </div>
         </div>
 
-          <div class="card-footer">
-            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
-            <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
-          </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+          <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+        </div>
       </form>
     </div>
   </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-  
-        <div class="card-body">
-          <div class="row">
-            <table class="table table-responsive-sm table-hover table-outline mb-0">
-              <thead class="thead-light">
-                <tr>
-                  <th class="text-center">Check in ID</th>
-                  <th class="text-center">Room No</th>
-                  <th class="text-center">Room type</th>
-                  <th class="text-center">Start Date</th>
-                  <th class="text-center">End Date</th>
-                </tr>
-              </thead>
-              <tbody>
-  
-                <tr *ngFor="let checkin of booking_data">
-                  <td class="text-center">
-                    {{checkin.id}}
-                  </td>
-                  <td class="text-center">
-                    {{checkin.roomDetails.roomNo}}
-                  </td>
-                  <td class="text-center">
-                    {{checkin.roomDetails.roomType}}
-                  </td>
-                  <td class="text-center">
-                    {{checkin.startDate}}
-                  </td>
-                  <td class="text-center">
-                    {{checkin.endDate}}
-                  </td>
-  
-                </tr>
-  
-              </tbody>
-            </table>
-          </div>
+  <div class="col-md-12">
+    <div class="card">
+
+      <div class="card-body">
+        <div class="row">
+          <table class="table table-responsive-sm table-hover table-outline mb-0">
+            <thead class="thead-light">
+              <tr>
+                <th class="text-center">Check in ID</th>
+                <th class="text-center">Room No</th>
+                <th class="text-center">Room type</th>
+                <th class="text-center">Start Date</th>
+                <th class="text-center">End Date</th>
+                <th class="text-center">Special Note</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr *ngFor="let checkin of booking_data">
+                <td class="text-center">
+                  {{checkin.id}}
+                </td>
+                <td class="text-center">
+                  {{checkin.roomDetails.roomNo}}
+                </td>
+                <td class="text-center">
+                  {{checkin.roomDetails.roomType}}
+                </td>
+                <td class="text-center">
+                  {{checkin.startDate}}
+                </td>
+                <td class="text-center">
+                  {{checkin.endDate}}
+                </td>
+                <td class="text-center">
+                  {{checkin.remark}}
+                </td>
+
+              </tr>
+
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
+</div>

@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class EmployeeService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
 
     getLeavs() {
@@ -30,7 +30,8 @@ export class EmployeeService {
         return this.http.post<any>(environment.api_url + '/leaves/', $payload);
     }
 
-    submitBooking($payload) {
-        return this.http.post<any>(environment.api_url + '/checkin/', $payload);
+    submitBooking($payload, $roomID) {
+        console.log(environment.api_url + 'room/' + $roomID + '/checkin');
+        return this.http.post<any>(environment.api_url + 'room/' + $roomID + '/checkin', $payload);
     }
 }
