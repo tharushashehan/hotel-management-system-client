@@ -56,8 +56,8 @@
         <label class="col-md-3 col-form-label" for="em_type">Employee Type</label>
         <div class="col-md-9">
           <select id="em_type" name="userType" class="form-control" formControlName ="userType" placeholder="Employee type">
-            <option value="Admin">admin</option>
-            <option value="Employee">employee</option>
+            <option value="admin">admin</option>
+            <option value="employee">employee</option>
           </select>
         </div>
       </div>
@@ -79,6 +79,15 @@
           <!--</div>-->
         <!--</div>-->
       <!--</div>-->
+      <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="em_password">Password</label>
+          <div class="col-md-9">
+            <input type="password" id="em_password" name="userPassword" class="form-control" placeholder="Password" formControlName ="userPassword" [ngClass]="{ 'is-invalid': submitted && f.userPassword.errors }">
+            <div *ngIf="submitted && f.userPassword.errors" class="invalid-feedback">
+              <div *ngIf="f.userPassword.errors.required" >Password is required</div>
+            </div>
+          </div>
+        </div>
       <div class="form-group row" >
         <label class="col-md-3 col-form-label" for="em_profile_pic">Profile Pic</label>
         <div class="col-md-9">

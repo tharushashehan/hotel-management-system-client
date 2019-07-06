@@ -8,7 +8,7 @@ import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class UserService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     getUsers() {
         return this.http.get<any>(environment.api_url + '/user/user-list');
@@ -27,7 +27,8 @@ export class UserService {
     }
 
     updateUser(id, $payload) {
-        return this.http.post(environment.api_url + `/user/put-user/` + id, $payload);
+        console.log($payload);
+        return this.http.post(environment.api_url + `/user/put-user/` + id + '/' + $payload.userPassword, $payload);
     }
 
 }

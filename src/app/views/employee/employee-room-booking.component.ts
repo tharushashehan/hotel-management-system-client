@@ -1,8 +1,10 @@
-import { Component , OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from './employee.service';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { async } from 'q';
 
 @Component({
   templateUrl: 'employee-room-booking.component.html'
@@ -17,7 +19,11 @@ export class EmployeeRoomBookingComponent implements OnInit {
 
   booking_data = [];
 
-  constructor(private employeeService: EmployeeService, private router: Router) {
+  constructor(private employeeService: EmployeeService, private router: Router, private toastr: ToastrService, private route: ActivatedRoute) {
+    if (this.route.snapshot.queryParamMap.get('registered')) {
+      this.toastr.success('Room booking successful', 'Success!');
+      this.router.navigate(['/employee/room-booking']);
+    }
   }
 
   ngOnInit() {
@@ -26,7 +32,7 @@ export class EmployeeRoomBookingComponent implements OnInit {
       bookin => {
         console.log(bookin);
         this.booking_data = bookin
-      }, 
+      },
       error => {
         this.error = error;
         this.loading = false;
@@ -56,8 +62,7 @@ export class EmployeeRoomBookingComponent implements OnInit {
   }
 
   onClickSubmit(bookingdata) {
-
-    alert('fef');
+    
     this.submitted = true;
 
     // stop here if form is invalid
@@ -67,15 +72,17 @@ export class EmployeeRoomBookingComponent implements OnInit {
 
       this.loading = true;
       this.employeeService.submitBooking(bookingdata, bookingdata.roomNo)
-          .pipe(first())
-          .subscribe(
-              data => {
-                this.router.navigate(['/employee/room-booking'], {queryParams: {registered: true}});
-              },
-              error => {
-                this.error = error;
-                this.loading = false;
-              });
+        .pipe(first())
+        .subscribe(
+          async data => {
+            await this.router.navigate(['/employee/room-booking'], { queryParams: { registered: true } });
+            window.location.reload();
+          },
+          error => {
+            this.toastr.error('Can not book the Room', 'Error!');
+            this.error = error;
+            this.loading = false;
+          });
     }
   }
 

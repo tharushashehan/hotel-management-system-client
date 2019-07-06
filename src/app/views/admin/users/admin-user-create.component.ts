@@ -72,6 +72,9 @@ export class AdminUserCreateComponent implements OnInit {
       userEmail: new FormControl('', Validators.compose([
         Validators.required
       ])),
+      userPassword: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
       userType: new FormControl('', Validators.compose([
         Validators.required
       ])),
@@ -96,9 +99,10 @@ export class AdminUserCreateComponent implements OnInit {
                     userLName: user.userLName,
                     userNIC: user.userNIC,
                     userEmail: user.userEmail,
+                    userPassword: user.userPassword,
                     userType: user.userType,
                     userAddrs: user.userAddrs,
-                    userImage: user.userAddrs,
+                    userImage: user.userAddrs
                   });
                 },
                 error => {
@@ -136,8 +140,8 @@ export class AdminUserCreateComponent implements OnInit {
         this.userService.updateUser(this.user_id, userdata)
             .pipe(first())
             .subscribe(
-                data => {
-                  this.router.navigate(['/admin/users/create/'], {queryParams: {updated: true}});
+                async data => {
+                  await this.router.navigate(['/admin/users/create/'], {queryParams: {updated: true}});
                   window.location.reload();
                 },
                 error => {
@@ -149,8 +153,8 @@ export class AdminUserCreateComponent implements OnInit {
         this.userService.submitUser(userdata)
             .pipe(first())
             .subscribe(
-                data => {
-                  this.router.navigate(['/admin/users/create/'], {queryParams: {registered: true}});
+                async data => {
+                  await this.router.navigate(['/admin/users/create/'], {queryParams: {registered: true}});
                   window.location.reload();
                 },
                 error => {
@@ -170,8 +174,8 @@ export class AdminUserCreateComponent implements OnInit {
       this.userService.deleteUser(userId)
           .pipe(first())
           .subscribe(
-              data => {
-                this.router.navigate(['/admin/users/create/'], { queryParams: { deleted: true }});
+              async data => {
+                await this.router.navigate(['/admin/users/create/'], { queryParams: { deleted: true }});
                 window.location.reload();
               },
               error => {

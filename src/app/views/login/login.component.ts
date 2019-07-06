@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   $user_data = {};
 
 
-  constructor(private router: Router, private loginService: LoginService) {
+  constructor(private router: Router, private loginService: LoginService, private toastr: ToastrService) {
     // redirect to home if already logged in
 
     if (this.loginService.currentUserValue && this.loginService.currentUserValue.userType) {
@@ -63,7 +64,6 @@ export class LoginComponent implements OnInit {
 
     // stop here if form is invalid
     if (this.LoginForm.invalid) {
-      alert('df');
       return;
     } else {
 
@@ -72,6 +72,9 @@ export class LoginComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
+                if(data==null){
+                  this.toastr.error('Invalid username or password', 'Error!');
+                }
                 this.$user_data = data;
                 if (data.userType === 'employee') {
                   this.router.navigate(['/employee']);
@@ -82,6 +85,7 @@ export class LoginComponent implements OnInit {
                 }
               },
               error => {
+                this.toastr.error('Invalid username or password', 'Error!');
                 this.error = error;
                 this.loading = false;
               });
