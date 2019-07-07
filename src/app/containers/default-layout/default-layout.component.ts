@@ -13,6 +13,7 @@ export class DefaultLayoutComponent implements OnDestroy {
   public sidebarMinimized = true;
   private changes: MutationObserver;
   public element: HTMLElement;
+  public useName ;
   constructor(private loginService: LoginService , private router: Router , @Inject(DOCUMENT) _document?: any   ) {
 
     this.changes = new MutationObserver((mutations) => {
@@ -26,9 +27,12 @@ export class DefaultLayoutComponent implements OnDestroy {
 
     if (this.loginService.currentUserValue.userType === 'admin') {
       this.navItems = navItemsAdmin;
+      this.useName = this.loginService.currentUserValue.userFName + ' ' + this.loginService.currentUserValue.userLName ;
     } else {
       this.navItems = navItemsEmployee;
     }
+
+
   }
 
   ngOnDestroy(): void {
