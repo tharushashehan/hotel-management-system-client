@@ -30,6 +30,7 @@ export class DefaultLayoutComponent implements OnDestroy {
       this.useName = this.loginService.currentUserValue.userFName + ' ' + this.loginService.currentUserValue.userLName ;
     } else {
       this.navItems = navItemsEmployee;
+      this.useName = this.loginService.currentUserValue.userFName + ' ' + this.loginService.currentUserValue.userLName ;
     }
 
 
