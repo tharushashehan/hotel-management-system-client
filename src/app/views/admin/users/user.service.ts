@@ -15,11 +15,12 @@ export class UserService {
     }
 
     getUser(id) {
-        return this.http.get<any>(environment.api_url + '/user//single-user/' + id);
+        return this.http.get<any>(environment.api_url + '/user/single-user/' + id);
     }
 
     submitUser($payload) {
-        return this.http.post(environment.api_url + '/user/create', $payload);
+        console.log($payload);
+        return this.http.post(environment.api_url + '/user/create/'+ $payload.userPassword, $payload);
     }
 
     deleteUser(id) {
