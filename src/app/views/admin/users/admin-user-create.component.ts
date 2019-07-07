@@ -18,6 +18,8 @@ export class AdminUserCreateComponent implements OnInit {
   loading = false;
   error: string;
   isReload = true;
+  fileData: File = null;
+  imgURL = new Array<string>();
 
   users_data = [];
   user_data = {};
@@ -98,8 +100,9 @@ export class AdminUserCreateComponent implements OnInit {
                     userEmail: user.userEmail,
                     userType: user.userType,
                     userAddrs: user.userAddrs,
-                    userImage: user.userAddrs,
+                    userImage: user.userImage,
                   });
+                  this.imgURL = user.userImage;
                 },
                 error => {
                   this.error = error;
@@ -118,11 +121,13 @@ export class AdminUserCreateComponent implements OnInit {
 
   onClickSubmit(userdata) {
 
+    userdata.userImage = this.fileData ;
     this.submitted = true;
 
+    console.log(userdata);
     // stop here if form is invalid
     if (this.UserForm.invalid) {
-      if (this.user_id){
+      if (this.user_id) {
         this.toastr.error('update user data to update user details', 'Error!');
       } else {
         this.toastr.error('Can not create user check your form', 'Error!');
@@ -189,5 +194,24 @@ export class AdminUserCreateComponent implements OnInit {
     this.router.navigate(['/admin/users/create/' ], { queryParams: { id: userId }});
   }
 
+  preview(event) {
+    this.fileData = event.target.files ;
+
+    this.imgURL = [];
+    const files = event.target.files;
+    if (files) {
+      for (let file of files) {
+        let reader = new FileReader();
+        reader.onload = (e: any) => {
+          console.log(e.target.result);
+          this.imgURL.push(e.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    console.log(this.imgURL);
+
+  }
 
 }
