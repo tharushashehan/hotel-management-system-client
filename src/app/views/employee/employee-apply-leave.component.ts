@@ -82,8 +82,13 @@ export class EmployeeApplyLeaveComponent implements OnInit {
           .pipe(first())
           .subscribe(
               async data => {
-                await this.router.navigate(['/employee/apply-leave'], {queryParams: {registered: true}});
-                window.location.reload();
+                if (data == null){
+                  this.toastr.error('Can not apply leave, Please check the dates', 'Error!');
+                } else {
+                  await this.router.navigate(['/employee/apply-leave'], {queryParams: {registered: true}});
+                  window.location.reload();
+                }
+
               },
               error => {
                 this.toastr.error('Can not apply leave', 'Error!');

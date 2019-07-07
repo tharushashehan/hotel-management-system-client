@@ -75,8 +75,13 @@ export class EmployeeRoomBookingComponent implements OnInit {
         .pipe(first())
         .subscribe(
           async data => {
-            await this.router.navigate(['/employee/room-booking'], { queryParams: { registered: true } });
-            window.location.reload();
+            if (data == null){
+              this.toastr.error('Can not book the Room, please check the dates', 'Error!');
+            } else{
+              await this.router.navigate(['/employee/room-booking'], { queryParams: { registered: true } });
+              window.location.reload();
+            }
+
           },
           error => {
             this.toastr.error('Can not book the Room', 'Error!');
